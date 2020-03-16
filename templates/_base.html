@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<!--
+Базовая страница, хедер и футер
+
+Структура данных контекста:
+
+site:
+    domain -- Домен
+    site_type -- Тип площадки
+    favicon -- Иконка с расширением .ico или .png
+    site_banner -- Баннер по умолчанию на сайте. Отображается на всех страницах в верхней части, фоном для заголовка.
+    title -- Название сайта, например, Courchevel 1850
+    phone -- Телефонный номер
+
+    # Оформление: шрифты и кнопки.
+    font -- Основной шрифт сайта (Arial, Montserrat, Roboto, Fira Sans, Roboto slab, Merriweather, Noto Serif)
+
+    h1_font -- H1, шрифт
+    h1_size -- H1, размер шрифта
+    h2_font -- H2, шрифт
+    h2_size -- H2, размер шрифта
+    h3_font -- H3, шрифт
+    h3_size -- H3, размер шрифта
+
+    # Оформление: Цвета
+    primary_color -- Основной цвет сайта
+    secondary_color -- Дополнительный цвет сайта
+    tertiary_color -- Третичный цвет сайта
+    background_color -- Цвет футера сайта
+    body_background_color -- Основной цвет фона
+    font_color -- Цвет шрифта
+
+    # Аналитика
+    metrics_google -- Код Google Analytics
+    metrics_yandex -- Код метрики Yandex
+    robots_txt -- Содержимое robots.txt
+    jivosite_id -- id для jivosite
+    yandex_site_verification -- Код для Яндекс.Вебмастера
+    google_site_verification -- Код для google-site-verification
+
+
+-->
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="{{ site.title }}">
+  <meta name="theme-color" content="#262933">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,600,700,800,900&display=swap">
+  <link rel="stylesheet" href="{% static 'js/libs/datepicker/datepicker.min.css' %}">
+  <link rel="stylesheet" href="{% static 'js/libs/nouislider/nouislider.min.css' %}">
+  <link rel="stylesheet" href="{% static 'js/libs/select2/select2.min.css' %}">
+  <link rel="stylesheet" href="{% static 'js/libs/slick/slick.min.css' %}">
+  <link rel="stylesheet" href="{% static 'js/libs/fancybox/fancybox.css' %}">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <title>{{ site.title }}</title>
+</head>
+
+
+<body>
+
+  <div class="overlay"></div>
+
+  <div class="modal">
+    <div class="modal__close"></div>
+    <div class="modal__wrp">
+      <div class="modal__icon"></div>
+      <div class="modal__row_1">Спасибо, ваше обращение принято</div>
+      <div class="modal__row_2">Наш менеджер свяжется с вами в ближайшее время</div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="header_menu"><div></div><div></div><div></div></div>
+    <a href="/" class="logo logo-header" aria-label="logo"></a>
+    <nav class="navs navs-header">
+      <div class="menu_close"></div>
+      <a href="#" class="navs__nav" aria-label="Спецпредложения">Спецпредложения</a>
+      <a href="#" class="navs__nav" aria-label="Виды отдыха">Виды отдыха</a>
+      <a href="#" class="navs__nav" aria-label="О компании">О компании</a>
+      <a href="#" class="navs__nav" aria-label="Страны">Страны</a>
+    </nav>
+    <div class="header__right">
+      {% comment %} <div class="header__search"></div> {% endcomment %}
+      <a href="tel:{{ site.phone }}" class="phone phone-header">{{ site.phone }}</a>
+    </div>
+  </header>
+
+  <main>
+      {% block content %}
+      {% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="wrapper wrapper-footer">
+      <div class="footer__left">
+        <a href="/" class="logo logo-footer" aria-label="logo"></a>
+        <div class="footer__copy">© 2019 - Book and Travel <br />Все права защищены</div>
+      </div>
+      <nav class="navs navs-footer">
+        <a href="#" class="navs__nav" aria-label="Спецпредложения">Спецпредложения</a>
+        <a href="#" class="navs__nav" aria-label="Виды отдыха">Виды отдыха</a>
+        <a href="#" class="navs__nav" aria-label="О компании">О компании</a>
+        <a href="#" class="navs__nav" aria-label="Страны">Страны</a>
+      </nav>
+      <img class="pay_types lazyload" width="184" height="19" src="#" data-src="{% static 'img/pay_types.svg' %}" alt="">
+      <a href="tel:{{ site.phone }}" class="phone" aria-label="{{ site.phone }}">{{ site.phone }}</a>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/libs/jquery/jquery.js' %}"></script>
+  <script src="{% static 'js/libs/lazysizes/lazysizes.min.js' %}"></script>
+  <script src="{% static 'js/libs/youtubebackground/youtubebackground.min.js' %}"></script>
+  <script src="{% static 'js/libs/datepicker/datepicker.min.js' %}"></script>
+  <script src="{% static 'js/libs/datepicker/datepicker.ru-RU.js' %}"></script>
+  <script src="{% static 'js/libs/nouislider/nouislider.min.js' %}"></script>
+  <script src="{% static 'js/libs/select2/select2.min.js' %}"></script>
+  <script src="{% static 'js/libs/slick/slick.min.js' %}"></script>
+  <script src="{% static 'js/libs/fancybox/fancybox.js' %}"></script>
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>
