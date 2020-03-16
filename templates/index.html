@@ -1,145 +1,6 @@
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="theme-color" content="#51A5B0"/>
-    <link rel="icon" href="/static/favicons/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="60x60" href="/static/favicons/apple-touch-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/static/favicons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/static/favicons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicons/apple-touch-icon.png">
-    <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#40bfac">
-    <link rel="icon" type="image/png" href="/static/favicons/favicon-16x16.png" sizes="16x16">
-    <link rel="icon" type="image/png" href="/static/favicons/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/static/favicons/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/png" href="/static/favicons/android-chrome-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="/static/favicons/android-chrome-512x512.png" sizes="512x512">
-    <link rel="manifest" href="static/manifest/manifest.json">
-    <meta name="msapplication-TileColor" content="#40bfac">
-    <meta name="msapplication-TileImage" content="/static/favicons/mstile-70x70.png">
-    <meta name="msapplication-TileImage" content="/static/favicons/mstile-150x150.png">
-    <meta name="msapplication-TileImage" content="/static/favicons/mstile-310x150.png">
-    <meta name="msapplication-TileImage" content="/static/favicons/mstile-310x310.png">
-    <meta name="description" content="Салоны KYNSI: Сити, Петровка, Патриаршие | Маникюр и педикюр Christina Fitzgerald, La Ric | Укладки и окрашивание"> 
+{% extends '_base.html' %}
 
-    <meta name="yandex-verification" content="5c0db6cde5150df0" />
-    <meta name="google-site-verification" content="8EroBFdot1LwYlq3C6hE42Nap0HSTemWg7ZIOQWljew" />
-
-    <link rel="stylesheet" href="/static/js/lib/slick/slick.css">
-
-    <link rel="stylesheet" href="/static/css/style.css?v=16032020">
-    <title>Салоны KYNSI: Сити, Петровка, Патриаршие | Маникюр и педикюр Christina Fitzgerald, La Ric | Укладки и окрашивание</title>
-  </head>
-  <body>
-
-    <div class="overlay"></div>
-
-    <div class="modal modal_discount">
-      <div class="modal__close"></div>
-      <div class="modal__img"></div>
-      <div class="modal__content modal__content-main active">
-        <div class="modal__title">Оставьте свой e-mail и получите скидку 15% на первое посещение!</div>
-        <div class="modal__text">Письмо со скидкой придет в течение 5 минут</div>
-        <form class="modal__form">
-          {% csrf_token %}
-          <input id="disc_name" aria-label="disc_name" name="name" type="text" placeholder="Как Вас зовут?">
-          <input id="disc_email" aria-label="disc_email" name="email" type="text" placeholder="На какую почту выслать скидку?">
-          <div class="modal__button">Получить скидку</div>
-        </form>
-        <div class="modal__bot">Мы обещаем не использовать вашу электронную почту для спама!</div>
-      </div>
-      <div class="modal__content modal__content-success">
-        <div class="modal__title modal__title-success">До встречи в KYNSI!</div>
-        <div class="modal__text modal__text-success">Обязательно проверьте папку со спамом!</div>
-      </div>
-    </div>
-
-    <div class="modal modal_cert">
-      <div class="modal__close"></div>
-        <div class="modal__img"></div>
-        <div class="modal__title modal__title-cert">Заказать подарочный сертификат</div>
-        <div class="modal__content modal__content-main active">
-          <form class="modal__form">
-            {% csrf_token %}
-            <input id="cert_name" aria-label="cert_name" name="name" type="text" placeholder="Ваше имя">
-            <input id="cert_phone" aria-label="cert_phone" name="phone" type="text" placeholder="Ваш номер телефона">
-            <input id="cert_nominal" aria-label="cert_nominal" name="nominal" type="text" placeholder="Номинал сертификата">
-            <div class="modal_nominal">Минимальный заказ: 3000 р.</div>
-            <div class="modal__button">Заказать</div>
-          </form>
-        </div>
-        <div class="modal__content modal__content-success">
-          <div class="modal__title modal__title-success">Ожидайте звонка вашего менеджера. До встречи в KYNSI!</div>
-        </div>
-    </div>
-
-    <div class="modal modal_box">
-      <div class="modal__close"></div>
-        <div class="modal__img"></div>
-        <div class="modal__title modal__title-cert">Заказать KYNSI BOX</div>
-        <div class="modal__content modal__content-main active">
-          <form class="modal__form">
-            {% csrf_token %}
-            <input id="box_name" aria-label="box_name" name="name" type="text" placeholder="Ваше имя">
-            <input id="box_phone" aria-label="box_phone" name="phone" type="text" placeholder="Ваш номер телефона">
-            <textarea id="box_nominal" aria-label="box_nominal" name="nominal" placeholder="Пожелания по наполнению"></textarea>
-            <div class="modal__button">Заказать</div>
-          </form>
-        </div>
-        <div class="modal__content modal__content-success">
-          <div class="modal__title modal__title-success">Ожидайте звонка вашего менеджера. До встречи в KYNSI!</div>
-        </div>
-    </div>
-
-    <div class="modal modal_info">
-      <div class="modal__close"></div>
-        <div class="modal__img"></div>
-        <div class="modal__title modal__title-info">На сертификате мы разместим Ваше персональное послание для человека, которому предназначен подарок.<br /><br />
-        Номинал сертификата: сумма по вашему желанию</div>
-    </div>
-
-    <div class="header">
-      <div class="wrapper wrapper-header">
-        <div class="header__logo"></div>
-        <nav class="header__navs">
-          <div data-nav="about" class="header__nav">О нас</div>
-          <div data-nav="services" class="header__nav">Услуги</div>
-          <div data-nav="salons" class="header__nav">Салоны</div>
-          <div data-nav="certs" class="header__nav">В подарок</div>
-          <div data-call-salon-org class="header__nav widget reservi_button_emulation">Онлайн-запись</div>
-          {% comment %}<a href="https://api.whatsapp.com/send?phone=79252377590" aria-label="whatsapp" class="header__nav header__nav-whatsapp">Записаться в Whatsapp <img class="lazyload" src="#" data-src="/static/img/whatsapp.svg" alt=""></a>{% endcomment %}
-        </nav>
-        <div class="header__right">
-          <div class="header__socials">
-            <a href="https://www.facebook.com/kynsi.salon" aria-label="facebook" rel="noopener" target="_blank" class="header__social"><svg width="5" height="12" viewBox="0 0 5 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.31482 12V5.12256H0.0623779V4.0752H1.31482V3.26221C1.31482 2.4126 1.54187 1.75586 1.99597 1.29199C2.45007 0.828125 3.09216 0.596191 3.92224 0.596191C4.23474 0.596191 4.5448 0.637695 4.85242 0.720703L4.77917 1.81934C4.54968 1.77539 4.30554 1.75342 4.04675 1.75342C3.6073 1.75342 3.26794 1.88281 3.02869 2.1416C2.78943 2.39551 2.6698 2.76172 2.6698 3.24023V4.0752H4.36169V5.12256H2.6698V12H1.31482Z"/></svg></a>
-            {% comment %}<a href="https://vk.com/kynsi" aria-label="vk" rel="noopener" target="_blank" class="header__social"><svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.778198 10V0.046875H4.0321C5.11218 0.046875 5.92338 0.270182 6.4657 0.716797C7.01257 1.16341 7.28601 1.82422 7.28601 2.69922C7.28601 3.16406 7.15385 3.5765 6.88953 3.93652C6.6252 4.29199 6.26518 4.56771 5.80945 4.76367C6.34721 4.91406 6.77104 5.20117 7.08093 5.625C7.39539 6.04427 7.55261 6.54557 7.55261 7.12891C7.55261 8.02214 7.26322 8.72396 6.68445 9.23438C6.10567 9.74479 5.28764 10 4.23035 10H0.778198ZM2.0907 5.34473V8.92676H4.25769C4.86837 8.92676 5.34916 8.76953 5.70007 8.45508C6.05554 8.13607 6.23328 7.69857 6.23328 7.14258C6.23328 5.94401 5.58158 5.34473 4.2782 5.34473H2.0907ZM2.0907 4.29199H4.07312C4.64734 4.29199 5.10535 4.14844 5.44714 3.86133C5.7935 3.57422 5.96667 3.18457 5.96667 2.69238C5.96667 2.14551 5.80717 1.74902 5.48816 1.50293C5.16915 1.25228 4.6838 1.12695 4.0321 1.12695H2.0907V4.29199Z"/></svg></a>{% endcomment %}
-            <a href="https://www.instagram.com/kynsisalon" aria-label="instagram" rel="noopener" target="_blank" class="header__social"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.6271 0.00166063C8.59584 0.00166063 9.56464 -0.00282375 10.5333 0.00294578C11.4447 0.00838719 12.3007 0.216227 13.0423 0.77028C14.0109 1.49384 14.5065 2.48219 14.5987 3.6748C14.6312 4.09453 14.6211 4.5179 14.6216 4.93961C14.6238 6.57503 14.6226 8.21046 14.6225 9.8459C14.6224 10.5139 14.5295 11.166 14.2468 11.7768C13.6735 13.0158 12.6733 13.6931 11.3538 13.9279C11.0786 13.9768 10.7948 13.9951 10.5149 13.9959C8.58259 14.0016 6.65026 14.0003 4.71796 13.9983C3.71314 13.9973 2.79415 13.7319 2.01101 13.08C1.21535 12.4177 0.795484 11.5516 0.664877 10.5361C0.642346 10.3609 0.628551 10.1833 0.628387 10.0068C0.6265 7.97551 0.614236 5.94413 0.634143 3.91307C0.645025 2.80338 1.01452 1.8195 1.8406 1.04424C2.52582 0.401221 3.35873 0.0652348 4.2843 0.032354C5.39725 -0.00718507 6.51269 0.0229888 7.62706 0.0229888C7.62707 0.0158657 7.62707 0.00875633 7.6271 0.00166063ZM7.61616 12.7062C8.54831 12.7062 9.48043 12.71 10.4125 12.7036C10.6563 12.702 10.9036 12.6899 11.1428 12.6466C12.0564 12.4814 12.7511 12.0232 13.1151 11.1335C13.3001 10.6816 13.3605 10.1967 13.3683 9.72704C13.3989 7.90497 13.3817 6.08209 13.3795 4.25951C13.3793 4.06206 13.3771 3.86241 13.3492 3.66758C13.2239 2.79275 12.8447 2.0757 12.0396 1.63965C11.5902 1.39627 11.1023 1.30439 10.5953 1.30422C8.6425 1.30365 6.68973 1.30307 4.73698 1.30541C4.5605 1.30563 4.38246 1.31539 4.20785 1.33993C3.21327 1.47958 2.48069 1.96974 2.11407 2.93407C1.96611 3.32322 1.91883 3.73098 1.91875 4.14498C1.91846 6.05088 1.91663 7.95674 1.92125 9.86266C1.92181 10.0958 1.93921 10.3324 1.98095 10.5615C2.1661 11.5781 2.73295 12.2768 3.74247 12.5577C4.07888 12.6513 4.43849 12.6926 4.78867 12.6997C5.73085 12.7186 6.67362 12.7061 7.61616 12.7062Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M11.231 6.97776C11.2301 8.9708 9.60395 10.5919 7.61037 10.587C5.61604 10.5822 4.00995 8.97241 4.00879 6.97724C4.00763 4.98427 5.63135 3.36306 7.62641 3.36524C9.60426 3.36737 11.2319 4.99856 11.231 6.97776ZM7.62125 9.28583C8.89283 9.2868 9.94013 8.24027 9.93793 6.97084C9.93573 5.71021 8.8911 4.66361 7.62987 4.65849C6.36012 4.65333 5.31333 5.69666 5.31064 6.97004C5.30796 8.24525 6.34518 9.28482 7.62125 9.28583Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M11.3649 4.09248C10.9134 4.08845 10.5576 3.72721 10.559 3.27446C10.5604 2.81658 10.9252 2.45757 11.3858 2.46071C11.8321 2.4638 12.1958 2.83215 12.1944 3.27971C12.1931 3.73362 11.8226 4.09657 11.3649 4.09248Z"/></svg></a>
-          </div>
-          <div class="header__phone">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.526 5.22483L5.76464 3.92989C5.98985 3.70468 6.10245 3.19797 5.76464 2.86016L3.39997 0.213978C3.39997 0.213978 2.83695 -0.180134 2.33023 0.101374C1.87982 0.382883 0.0781656 1.79043 0.584881 4.88702C1.1479 8.32143 7.17218 14.402 10.6066 14.9087C13.7032 15.4154 15.1107 13.6701 15.3922 13.1634C15.6737 12.6567 15.3359 12.0936 15.3359 12.0936L12.6335 9.72897C12.183 9.27856 11.7889 9.50376 11.5637 9.72897L10.3251 10.9676C9.36795 11.6432 3.85038 6.12566 4.526 5.22483Z"/></svg>
-            <div class="header__drop">
-              <div class="header__row">
-                <div class="header__title">Патриаршие</div>
-                <a class="mgo-number-11426 header__link" href="tel:+74951200303">+7 (495) 120-03-03</a>
-              </div>
-              <div class="header__row">
-                <div class="header__title">Петровка</div>
-                <a class="mgo-number-11408 header__link" href="tel:+74951202303">+7 (495) 120-23-03</a>
-              </div>
-              <div class="header__row">
-                <div class="header__title">Москва-Сити</div>
-                <a class="mgo-number-11427 header__link" href="tel:+74951500540">+7 (495) 150-05-40</a>
-              </div>
-            </div>
-          </div>
-          <div class="header__menu"></div>
-        </div>
-      </div>
-    </div>
-
+{% block content %}
     <div class="banner lazyload" data-bg="/static/img/banner-mob.jpg">
       {% comment %} <div class="banner_warning"> Уважаемые гости! Сейчас запись онлайн работает в тестовом режиме. Если у вас не получилось записаться, пожалуйста, звоните в салон или пишите нам в WhatsApp. Приносим извинения за предоставленные неудобства</div> {% endcomment %}
       <div class="banner__video">
@@ -158,882 +19,665 @@
       </div>
     </div>
 
-    <div class="wrapper">
-      {% comment %}<section class="competition">
-        <div class="competition__left">Получи в подарок 2 билета на балет «Щелкунчик» в Большой Театр от KYNSI!</div>
-        <div class="competition__line"></div>
-        <div class="competition__center">
-          <div class="competition__title">Дорогие друзья, как мы и обещали - настоящее новогоднее чудо! </div>
-          <div class="competition__text">Чтобы сказка стала реальностью, вас ждёт шопинг в <b>Garderob</b> на <b>50 000</b> рублей, ужин в ресторане <b>Novikov</b> на <b>30 000</b> рублей, ночь в бутик-отеле <b>Moss</b>, а перед спектаклем вас соберет команда стилистов <b>KYNSI</b>, и водитель на <b>Mercedes Maybach</b> отвезет вас к дверям Большого Театра! </div>
-          <a href="https://www.instagram.com/p/BrYPU1vnZAj/" aria-label="instagram" rel="noopener" class="competition__button">Принять участие</a>
+  <div class="wrapper">
+
+    <section id="certs" class="certs">
+      <h2 class="reg__h2 reg__h2-certs">KYNSI в подарок</h2>
+      <div class="certs__big">В каком формате Вы  хотели бы приобрести подарок в KYNSI?</div>
+      <div class="certs__radios">
+
+      </div>
+      <div class="certs_slider">
+        <div class="certs_slider__slide" data-text="Электронный сертификат ">
+          <div class="certs_slider__text">
+            Электронные сертификаты KYNSI – чтобы вы могли порадовать близкого человека, даже если вы далеко или если хочется сделать кому-то приятное прямо сейчас. Электронный сертификат с вашим посланием будет отправлен в указанное вами время и непременно вызовет улыбку в момент получения и благодарность во время посещения салона KYNSI.
+            {% comment %}<div class="certs_slider__text-blue">10% в подарок от KYNSI при покупке электронного сертификата до 8 марта</div>{% endcomment %}
+          </div>
+          <a href="https://kynsi.digift.ru/" aria-label="digift" rel="noopener" class="certs_slider__wrp certs_slider__wrp-1" target="_blank">
+            <img class="certs_slider__img lazyload" src="#" data-src="/static/img/certs_img-3.jpg" alt="">
+          </a>
+          <a href="https://kynsi.digift.ru/" aria-label="digift" rel="noopener" target="_blank" class="button button-block_1 button-certs">Заказать электронный сертификат</a>
         </div>
-        <div class="competition__line"></div>
-        <img class="lazyload" src="#" src="/static/img/competition.svg" alt="">
-      </section>{% endcomment %}
+        <div class="certs_slider__slide" data-text="Бумажный сертификат">
+          <div class="certs_slider__text">KYNSI - это всегда праздник, поэтому сертификат в наши салоны стоит дарить близким и друзьям по любому поводу. Во время визита они сами смогут выбрать услуги по своему вкусу. Позвоните или напишите нам, и наши специалисты расскажут о возможностях приобретения нашего сертификата.</div>
+          <div class="certs_slider__wrp certs_slider__wrp-2">
+            <img class="certs_slider__img show_cert lazyload" src="#" data-src="/static/img/certs_img-4.jpg" alt="">
+            <div class="certs_slider__info"></div>
+          </div>
+          <div class="button button-block_1 button-certs show_cert">Заказать бумажный сертификат</div>
+        </div>
+        <div class="certs_slider__slide" data-text="KYNSI BOX">
+          <div class="certs_slider__text">Готовый подарок можно приобрести в каждом салоне KYNSI. Заботливые администраторы помогут Вам определиться с выбором продукции и упакуют подарок. Сделайте дорогому человеку вдвойне приятно дополнив KYNSI BOX сертификатом на услуги.</div>
+          <div class="certs_slider__wrp certs_slider__wrp-3">
+            <img class="certs_slider__img show_cert lazyload" src="#" data-src="/static/img/certs_img-5.jpg" alt="">
+          </div>
+          <div class="button button-block_1 button-certs show_box">Заказать KYNSI BOX</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="salons_slider__wrp">
+      <div class="salons_slider animation animation_bot">
+        <div class="salons_slide lazyload" data-bg="/static/img/block_8__block-1.jpg"></div>
+        <div class="salons_slide lazyload" data-bg="/static/img/block_8__block-2.jpg"></div>
+        <div class="salons_slide lazyload" data-bg="/static/img/block_8__block-3.jpg"></div>
+        <div class="salons_slide lazyload" data-bg="/static/img/salon_2-1.jpg"></div>
+        <div class="salons_slide lazyload" data-bg="/static/img/salon_2-2.jpg"></div>
+        <div class="salons_slide lazyload" data-bg="/static/img/salon_2-3.jpg"></div>
+        <div class="salons_slide lazyload" data-bg="/static/img/salon_2-7.jpg"></div>
+        <div class="salons_slide salons_slide-top_30 lazyload" data-bg="/static/img/salon_2-8.jpg"></div>
+        <div class="salons_slide lazyload" data-bg="/static/img/salon_3-1.jpg"></div>
+        <div class="salons_slide salons_slide-top_80 lazyload" data-bg="/static/img/salon_3-2.jpg"></div>
+        <div class="salons_slide salons_slide-top_30 lazyload" data-bg="/static/img/salon_3-3.jpg"></div>
+        <div class="salons_slide lazyload" data-bg="/static/img/salon_3-5.jpg"></div>
+      </div>
+      <h2 class="salons_slider__h2 animation animation_bot">KYNSI – это три салона, расположенных в самых знаковых местах Москвы: Патриаршие пруды, Петровка и Москва Сити.</h2>
+      <div class="salons_slider__text animation animation_bot">Команда высокопрофессиональных мастеров по маникюру, cтилистов и визажистов сделает ваше пребывание в KYNSI максимально безопасным и комфортным.</div>
+    </section>
+
+    <section class="block_1">
+      <div class="block_1__image animation animation_left lazyload" data-bg="/static/img/block_1__image.jpg"></div>
+      <div class="block_1__right animation animation_right">
+        <h2 class="block_1__h2">Попробуйте любимые услуги наших гостей</h2>
+        <div class="block_1__services">
+          <div class="block_1__row">Безводный пилочный маникюр с уходом до локтя <span>2900.-</span></div>
+          <div class="block_1__row">Маникюр и педикюр в четыре руки со спа-уходом <span>6700.-</span></div>
+          <div class="block_1__row">Стрижка женская <span>4000.-</span></div>
+          <div class="block_1__row">Маникюр и укладка голивудские локоны одновременно <span>6200.-</span></div>
+          <div class="block_1__row">Дневной макияж и укладка по форме <span>5400.-</span></div>
+          <div class="block_1__row">Вечерний макияж и укладка локоны <span>8800.-</span></div>
+        </div>
+        <div class="button button-block_1 to_salons">Перейти к выбору салона</div>
+      </div>
+    </section>
+
+    <section class="block_4">
+      <div class="block_2__left block_2__left-4 animation animation_left">
+        <h2 class="block_2__h2">Комфорт в KYNSI</h2>
+        <div class="block_2__text">Удобные кресла для педикюра, в которых можно находиться часами и даже успеть посмотреть не один фильм. Персональные экраны в vip-кабинетах, а для большего уединения – наушники для просмотра, как во время педикюра, так и за маникюром.</div>
+        <div class="block_2__text">Вода с лимоном и мятой, сухофрукты и сладости, чай, кофе с любым видом молока, горячее ошибори в холодную погоду, и холодное – жарким летом, утренний шот из апельсинового сока с имбирем и медом для бодрости, мороженое из кокосового молока в теплое время года, и, конечно, шампанское по пятницам. Kid friendly и dogs friendly – мы рады видеть вас в семейном кругу и сделаем так, чтобы всем было комфортно.</div>
+      </div>
+      <div class="block_2__image block_2__image-4 animation animation_right lazyload" data-bg="/static/img/block_2__image-4.jpg"></div>
+    </section>
+
+    <section class="reg">
+      <div class="reg__wrp">
+        <div class="reg__img reg__img-book animation animation_left lazyload animated" data-bg="/static/img/reg__img-book.jpg"></div>
+        <div class="reg__content animation animation_right animated">
+          <h2 class="reg__h2">Запись на услуги удобным для Вас способом</h2>
+          <div class="reg__text">Напишите нам в Whatsapp, закажите звонок через чат на сайте или воспользуйтесь онлайн-записью. Наши специалисты предложат удобное для Вас время, расскажут о мастерах и помогут выбрать интересующую услугу. </div>
+          <div class="book__wrp">
+            <a href="https://api.whatsapp.com/send?phone=79252377590" aria-label="whatsapp" class="button button-block_1">Записаться в Whatsapp</a>
+            <div data-call-salon-org="" class="button button-block_1 reservi_button_emulation widget">Записаться онлайн</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="about" class="block_3">
+      <div class="block_3__slider animation animation_bot">
+        <article class="block_3__slide">
+          <div class="block_3__image lazyload" data-bg="/static/img/block_3__image-1.jpg"></div>
+          <div class="block_3__content">
+            <h2 class="block_3__h2">NAIL SPA & HAIR</h2>
+            <div class="block_3__text">KYNSI – это не просто салон, это СПА для рук и ног, а также полный спектр услуг за волосами. В основе нашей концепции экологичный подход к услугам и к окружающей среде. Это прослеживается как в самом оформлении пространства с использованием дерева и зелени, так и в безводном маникюре.</div>
+          </div>
+        </article>
+        <article class="block_3__slide">
+          <div class="block_3__image lazyload" data-bg="/static/img/block_3__image-2.jpg"></div>
+          <div class="block_3__content">
+            <h2 class="block_3__h2">Ручная работа</h2>
+            <div class="block_3__text">Австралийская система пилочного маникюра – самый безопасный и при этом очень приятный способ обработки ногтя и ухода за руками. Одноразовые пилочки для каждого гостя, которые он при желании может забрать с собой. Это самая щадящая и атравматичная обработка, за счет нее кутикула растет медленнее.</div>
+          </div>
+        </article>
+        <article class="block_3__slide">
+          <div class="block_3__image lazyload" data-bg="/static/img/block_3__image-3.jpg"></div>
+          <div class="block_3__content">
+            <h2 class="block_3__h2">Премиальные бренды</h2>
+            <div class="block_3__text">В KYNSI роскошная коллекция уходов, на таких брендах как St.Barth, Elemis, La Ric и Christina Fitzerald. В уходе до 8-ми средств, он включает в себя омовение рук и ног, пилинг, маску или крем, масло для кутикулы.</div>
+            <div class="block_3__text">У каждого бренда есть свои приятные ритуальные моменты – от поджигания свечи и массажа ракушками до арома-воротника на плечи, для расслабления и прогревания плеч.</div>
+          </div>
+        </article>
+        <article class="block_3__slide">
+          <div class="block_3__image lazyload" data-bg="/static/img/block_3__image-4.jpg"></div>
+          <div class="block_3__content">
+            <h2 class="block_3__h2">Академия KYNSI</h2>
+            <div class="block_3__text">Каждый новый мастер проходит многоступенчатую систему обучения, вне зависимости от имеющего опыта. Мы обучаем пилочному маникюру и педикюру,  массажу рук и ног, правильному выполнению уходов на четырех брендах, а также как правильно покрывать ногти лаком и гелем.  Мастер сдает сначала теорию, потом несколько зачетов и экзаменов на практике. До тех пор, пока он не сдаст все тесты и не докажет, что он готов к работе с гостем.</div>
+          </div>
+        </article>
+        <div class="block_3__slide">
+          <div class="block_3__image lazyload" data-bg="/static/img/block_3__image-5.jpg"></div>
+          <div class="block_3__content">
+            <div class="block_3__text">При обучении стилистов, у нас схожая система обучения, которая дополнена большим количеством мастер-классов от брендов на которых мы работаем по окрашиванию и уходам, а также дополнительные тренинги по укладкам, прическам и стрижкам.</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="wrapper">
 
-      {% comment %} <section class="reg">
-        <div class="reg__wrp">
-          <div class="reg__img reg__img-book animation animation_left lazyload" style="background-image: url(/static/img/reg__img-new.jpg);" data-src="/static/img/reg__img-new.jpg"></div>
-          <div class="reg__content animation animation_right">
-            <h2 class="reg__h2">Самый романтичный подарок, который она так ждёт.</h2>
-            <div class="reg__text">Спа-маникюр и педикюр за бокалом шаманского в vip- кабинете салонов KYNSI в самом центре Москвы. Закажите сертификат на любую сумму или услугу.</div>
-            <div class="book__wrp book__wrp-hearts">
-              <img class="hearts lazyload" src="/static/img/hearts.png" data-src="/static/img/hearts.png" alt="">
-              <div class="button button-block_1 to_certs">Заказать</div>
-            </div>
-          </div>
-        </div>
-      </section> {% endcomment %}
-
-      {% comment %}<section class="block_4 block_4-1">
-        <div class="block_2__image block_2__image-4 animation animation_left lazyload" style="background-image: url(/static/img/block_4-1.jpg);" data-src="/static/img/block_4-1.jpg"></div>
-        <div class="block_2__left block_2__left-4 animation animation_right">
-          <h2 class="block_2__h2">Мы хотим сказать спасибо всем, кто с нами!</h2>
-          <div class="block_2__text">Каждому постоянному гостю ( от 1 года) мы дарим возможность поучаствовать в розыгрыше призов от KYNSI, а также скидку 50% на маникюр для близких людей на первое посещение!</div>
-          <div class="block_2__text"><span>1 место:</span> SPA для двоих в KYNSI ( маникюр и педикюр с уходом ) и ночь в бутик-отеле<br /> 
-          <span>2 место:</span> SPA на одного в KYNSI ( маникюр и педикюр с уходом ) и ужин на двоих в ресторане<br />
-          <span>3 место:</span> SPA маникюр и Стрижка</div>
-          <div class="block_2__text">Все подробности уточняйте у администраторов!</div>
-          <a href="https://www.instagram.com/p/Bu67px6AZkl/" aria-label="instagram" rel="noopener" target="_blank" class="button button-block_1">Подробнее</a>
-        </div>
-      </section>{% endcomment %}
-
-      <section id="certs" class="certs">
-        <h2 class="reg__h2 reg__h2-certs">KYNSI в подарок</h2>
-        <div class="certs__big">В каком формате Вы  хотели бы приобрести подарок в KYNSI?</div>
-        <div class="certs__radios">
-
-        </div>
-        <div class="certs_slider">
-          <div class="certs_slider__slide" data-text="Электронный сертификат ">
-            <div class="certs_slider__text">
-              Электронные сертификаты KYNSI – чтобы вы могли порадовать близкого человека, даже если вы далеко или если хочется сделать кому-то приятное прямо сейчас. Электронный сертификат с вашим посланием будет отправлен в указанное вами время и непременно вызовет улыбку в момент получения и благодарность во время посещения салона KYNSI.
-              {% comment %}<div class="certs_slider__text-blue">10% в подарок от KYNSI при покупке электронного сертификата до 8 марта</div>{% endcomment %}
-            </div>
-            <a href="https://kynsi.digift.ru/" aria-label="digift" rel="noopener" class="certs_slider__wrp certs_slider__wrp-1" target="_blank">
-              <img class="certs_slider__img lazyload" src="#" data-src="/static/img/certs_img-3.jpg" alt="">
-            </a>
-            <a href="https://kynsi.digift.ru/" aria-label="digift" rel="noopener" target="_blank" class="button button-block_1 button-certs">Заказать электронный сертификат</a>
-          </div>
-          <div class="certs_slider__slide" data-text="Бумажный сертификат">
-            <div class="certs_slider__text">KYNSI - это всегда праздник, поэтому сертификат в наши салоны стоит дарить близким и друзьям по любому поводу. Во время визита они сами смогут выбрать услуги по своему вкусу. Позвоните или напишите нам, и наши специалисты расскажут о возможностях приобретения нашего сертификата.</div>
-            <div class="certs_slider__wrp certs_slider__wrp-2">
-              <img class="certs_slider__img show_cert lazyload" src="#" data-src="/static/img/certs_img-4.jpg" alt="">
-              <div class="certs_slider__info"></div>
-            </div>
-            <div class="button button-block_1 button-certs show_cert">Заказать бумажный сертификат</div>
-          </div>
-          <div class="certs_slider__slide" data-text="KYNSI BOX">
-            <div class="certs_slider__text">Готовый подарок можно приобрести в каждом салоне KYNSI. Заботливые администраторы помогут Вам определиться с выбором продукции и упакуют подарок. Сделайте дорогому человеку вдвойне приятно дополнив KYNSI BOX сертификатом на услуги.</div>
-            <div class="certs_slider__wrp certs_slider__wrp-3">
-              <img class="certs_slider__img show_cert lazyload" src="#" data-src="/static/img/certs_img-5.jpg" alt="">
-            </div>
-            <div class="button button-block_1 button-certs show_box">Заказать KYNSI BOX</div>
-          </div>
-        </div>
-      </section>
-
-      {% comment %} <section class="breakfast">
-        <div class="breakfast__left animation animation_left"></div>
-        <div class="breakfast__right animation animation_right">
-          <h2 class="breakfast__h2">«Завтрак в KYNSI» это встречи с интересными людьми.</h2>
-          <div class="breakfast__text">KYNSI запускает серию мастер-классов - еще один способ совместить приятное с полезным. Мероприятие продумано так, что гости могут совместить участие во встрече и посещение услуги. Принять участие можно по предварительной записи.</div>
-          <div class="breakfast__title breakfast__title-green">Ближайший «Завтрак в KYNSI</div>
-          <div class="breakfast__text">4 декабря в 10.00 (KYNSI Патрики)</div>
-          <div class="breakfast__title breakfast__title-green">Встреча с коучем Ольгой Лабутиной</div>
-          <div class="breakfast__text">Тема мастер-класса: <br/><span>«Баланс в жизни: как понять, во что вкладывать силы и энергию.»</span></div>
-          <a href="https://api.whatsapp.com/send?phone=79252377590" aria-label="whatsapp" class="button button-block_1 button-breakfast">Записаться</a>
-          <a href="tel:+7(495)1200303" class="button button-block_1 button-breakfast button-breakfast_mobile">Записаться</a>
-        </div>
-      </section> {% endcomment %}
-
-      <section class="salons_slider__wrp">
-        <div class="salons_slider animation animation_bot">
-          <div class="salons_slide lazyload" data-bg="/static/img/block_8__block-1.jpg"></div>
-          <div class="salons_slide lazyload" data-bg="/static/img/block_8__block-2.jpg"></div>
-          <div class="salons_slide lazyload" data-bg="/static/img/block_8__block-3.jpg"></div>
-          <div class="salons_slide lazyload" data-bg="/static/img/salon_2-1.jpg"></div>
-          <div class="salons_slide lazyload" data-bg="/static/img/salon_2-2.jpg"></div>
-          <div class="salons_slide lazyload" data-bg="/static/img/salon_2-3.jpg"></div>
-          <div class="salons_slide lazyload" data-bg="/static/img/salon_2-7.jpg"></div>
-          <div class="salons_slide salons_slide-top_30 lazyload" data-bg="/static/img/salon_2-8.jpg"></div>
-          <div class="salons_slide lazyload" data-bg="/static/img/salon_3-1.jpg"></div>
-          <div class="salons_slide salons_slide-top_80 lazyload" data-bg="/static/img/salon_3-2.jpg"></div>
-          <div class="salons_slide salons_slide-top_30 lazyload" data-bg="/static/img/salon_3-3.jpg"></div>
-          <div class="salons_slide lazyload" data-bg="/static/img/salon_3-5.jpg"></div>
-        </div>
-        <h2 class="salons_slider__h2 animation animation_bot">KYNSI – это три салона, расположенных в самых знаковых местах Москвы: Патриаршие пруды, Петровка и Москва Сити.</h2>
-        <div class="salons_slider__text animation animation_bot">Команда высокопрофессиональных мастеров по маникюру, cтилистов и визажистов сделает ваше пребывание в KYNSI максимально безопасным и комфортным.</div>
-      </section>
-
-      <section class="block_1">
-        <div class="block_1__image animation animation_left lazyload" data-bg="/static/img/block_1__image.jpg"></div>
-        <div class="block_1__right animation animation_right">
-          <h2 class="block_1__h2">Попробуйте любимые услуги наших гостей</h2>
-          <div class="block_1__services">
-            <div class="block_1__row">Безводный пилочный маникюр с уходом до локтя <span>2900.-</span></div>
-            <div class="block_1__row">Маникюр и педикюр в четыре руки со спа-уходом <span>6700.-</span></div>
-            <div class="block_1__row">Стрижка женская <span>4000.-</span></div>
-            <div class="block_1__row">Маникюр и укладка голивудские локоны одновременно <span>6200.-</span></div>
-            <div class="block_1__row">Дневной макияж и укладка по форме <span>5400.-</span></div>
-            <div class="block_1__row">Вечерний макияж и укладка локоны <span>8800.-</span></div>
-          </div>
-          <div class="button button-block_1 to_salons">Перейти к выбору салона</div>
-        </div>
-      </section>
-
-      <section class="block_4">
-        <div class="block_2__left block_2__left-4 animation animation_left">
-          <h2 class="block_2__h2">Комфорт в KYNSI</h2>
-          <div class="block_2__text">Удобные кресла для педикюра, в которых можно находиться часами и даже успеть посмотреть не один фильм. Персональные экраны в vip-кабинетах, а для большего уединения – наушники для просмотра, как во время педикюра, так и за маникюром.</div>
-          <div class="block_2__text">Вода с лимоном и мятой, сухофрукты и сладости, чай, кофе с любым видом молока, горячее ошибори в холодную погоду, и холодное – жарким летом, утренний шот из апельсинового сока с имбирем и медом для бодрости, мороженое из кокосового молока в теплое время года, и, конечно, шампанское по пятницам. Kid friendly и dogs friendly – мы рады видеть вас в семейном кругу и сделаем так, чтобы всем было комфортно.</div>
-        </div>
-        <div class="block_2__image block_2__image-4 animation animation_right lazyload" data-bg="/static/img/block_2__image-4.jpg"></div>
-      </section>
-
-      <section class="reg">
-        <div class="reg__wrp">
-          <div class="reg__img reg__img-book animation animation_left lazyload animated" data-bg="/static/img/reg__img-book.jpg"></div>
-          <div class="reg__content animation animation_right animated">
-            <h2 class="reg__h2">Запись на услуги удобным для Вас способом</h2>
-            <div class="reg__text">Напишите нам в Whatsapp, закажите звонок через чат на сайте или воспользуйтесь онлайн-записью. Наши специалисты предложат удобное для Вас время, расскажут о мастерах и помогут выбрать интересующую услугу. </div>
-            <div class="book__wrp">
-              <a href="https://api.whatsapp.com/send?phone=79252377590" aria-label="whatsapp" class="button button-block_1">Записаться в Whatsapp</a>
-              <div data-call-salon-org="" class="button button-block_1 reservi_button_emulation widget">Записаться онлайн</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div id="about" class="block_3">
-        <div class="block_3__slider animation animation_bot">
-          <article class="block_3__slide">
-            <div class="block_3__image lazyload" data-bg="/static/img/block_3__image-1.jpg"></div>
-            <div class="block_3__content">
-              <h2 class="block_3__h2">NAIL SPA & HAIR</h2>
-              <div class="block_3__text">KYNSI – это не просто салон, это СПА для рук и ног, а также полный спектр услуг за волосами. В основе нашей концепции экологичный подход к услугам и к окружающей среде. Это прослеживается как в самом оформлении пространства с использованием дерева и зелени, так и в безводном маникюре.</div>
-            </div>
-          </article>
-          <article class="block_3__slide">
-            <div class="block_3__image lazyload" data-bg="/static/img/block_3__image-2.jpg"></div>
-            <div class="block_3__content">
-              <h2 class="block_3__h2">Ручная работа</h2>
-              <div class="block_3__text">Австралийская система пилочного маникюра – самый безопасный и при этом очень приятный способ обработки ногтя и ухода за руками. Одноразовые пилочки для каждого гостя, которые он при желании может забрать с собой. Это самая щадящая и атравматичная обработка, за счет нее кутикула растет медленнее.</div>
-            </div>
-          </article>
-          <article class="block_3__slide">
-            <div class="block_3__image lazyload" data-bg="/static/img/block_3__image-3.jpg"></div>
-            <div class="block_3__content">
-              <h2 class="block_3__h2">Премиальные бренды</h2>
-              <div class="block_3__text">В KYNSI роскошная коллекция уходов, на таких брендах как St.Barth, Elemis, La Ric и Christina Fitzerald. В уходе до 8-ми средств, он включает в себя омовение рук и ног, пилинг, маску или крем, масло для кутикулы.</div>
-              <div class="block_3__text">У каждого бренда есть свои приятные ритуальные моменты – от поджигания свечи и массажа ракушками до арома-воротника на плечи, для расслабления и прогревания плеч.</div>
-            </div>
-          </article>
-          <article class="block_3__slide">
-            <div class="block_3__image lazyload" data-bg="/static/img/block_3__image-4.jpg"></div>
-            <div class="block_3__content">
-              <h2 class="block_3__h2">Академия KYNSI</h2>
-              <div class="block_3__text">Каждый новый мастер проходит многоступенчатую систему обучения, вне зависимости от имеющего опыта. Мы обучаем пилочному маникюру и педикюру,  массажу рук и ног, правильному выполнению уходов на четырех брендах, а также как правильно покрывать ногти лаком и гелем.  Мастер сдает сначала теорию, потом несколько зачетов и экзаменов на практике. До тех пор, пока он не сдаст все тесты и не докажет, что он готов к работе с гостем.</div>
-            </div>
-          </article>
-          <div class="block_3__slide">
-            <div class="block_3__image lazyload" data-bg="/static/img/block_3__image-5.jpg"></div>
-            <div class="block_3__content">
-              <div class="block_3__text">При обучении стилистов, у нас схожая система обучения, которая дополнена большим количеством мастер-классов от брендов на которых мы работаем по окрашиванию и уходам, а также дополнительные тренинги по укладкам, прическам и стрижкам.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="block_7 animation animation_bot" data-bg="/static/img/block_7-2.jpg">
-        <div class="block_7__content">
-          <div class="block_7__row_1">15<span>%</span></div>
-          <div class="block_7__row_2">Запишитесь сейчас и получите скидку на все услуги салона</div>
-          <div>
-            <div class="block_7__row_3">Внимание!</div>
-            <div class="block_7__row_4">скидка действует только для новых клиентов, в случае если вы уже записывались к нам - скидка не будет учитываться!</div>
-          </div>
-          <div class="show_modal button button-block_1" data-optin-slug="cvgofril3trai0xyitge">Получить скидку</div>
-        </div>
-      </div>
-
-      {% comment %} <section class="block_2">
-        <div class="block_2__left">
-          <div class="block_2__text">KYNSI – это три салона, расположенных в самых знаковых местах Москвы: Патриаршие пруды, Петровка и Москва Сити.</div>
-          <div class="block_2__text">Команда высокопрофессиональных мастеров по маникюру, cтилистов и визажистов сделает ваше пребывание в KYNSI максимально безопасным и комфортным.</div>
-          <div data-call-salon-org class="button button-block_1 widget reservi_button_emulation">Перейти к выбору салона</div>
-        </div>
-        <div class="block_2__image"></div>
-      </section> {% endcomment %}
-
-      <section id="services" class="block_5">
-        <h2 class="block_5__h2 animation animation_left">Услуги</h2>
-        <div class="block_5__name animation animation_left">Услуги по уходу за волосами и лицом только в KYNSI на Патриарших прудах и в Москва-Сити</div>
-        {% comment %} <div class="block_5__top">
-          <div class="block_5__name active">KYNSI на Патриарших</div>
-          <div class="block_5__name">KYNSI на Петровке</div>
-          <div class="block_5__name">KYNSI в Москва Сити</div>
-        </div> {% endcomment %}
+    <div class="block_7 animation animation_bot" data-bg="/static/img/block_7-2.jpg">
+      <div class="block_7__content">
+        <div class="block_7__row_1">15<span>%</span></div>
+        <div class="block_7__row_2">Запишитесь сейчас и получите скидку на все услуги салона</div>
         <div>
-          <div class="block_5__wrp active">
-            <div class="block_1__services block_1__services-5 animation animation_bot">
-              <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-1.jpg"></div>
-              <div class="block_1__title">Маникюры</div>
-              <div class="block_5__hide">
-                <div class="block_1__semi_title">МАНИКЮР "БАЗОВЫЙ УХОД"</div>
-                <div class="block_1__row">Christina Fitzgerald «Ultimate» <span>2900.-</span></div>
-                <div class="block_1__row">Lа Ric «Аромапутешествие» <span>2900.-</span></div>
-                <div class="block_1__row">La Ric «Homme» <span>2900.-</span></div>
-                <div class="block_1__row">СТИЛЬ/ФОРМА/БЛЕСК <span>1800.-</span></div>
-                <div class="block_1__row">МАНИКЮР ДЕТСКИЙ (до 7 лет) <span>1600.-</span></div>
-                <div class="block_1__semi_title">МАНИКЮР "ИНТЕНСИВНЫЙ УХОД"</div>
-                <div class="block_1__row">Elemis «Глубокое увлажнение»  <span>3500.-</span></div>
-                <div class="block_1__row">St.Barth «Карибское путешествие» <span>3500.-</span></div>
-                <div class="block_1__row">La Ric «Золотое сияние» <span>3500.-</span></div>
-              </div>
-            </div>
-            <div class="block_1__services block_1__services-5 animation animation_bot">
-              <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-2.jpg"></div>
-              <div class="block_1__title">Педикюры</div>
-              <div class="block_5__hide">
-                <div class="block_1__semi_title">ПЕДИКЮР «БАЗОВЫЙ УХОД»</div>
-                <div class="block_1__row">Christina Fitzgerald «Ultimate» <span>3800.-</span></div>
-                <div class="block_1__row">Lа Ric «Аромапутешествие» <span>3800.-</span></div>
-                <div class="block_1__row">La Ric «Homme» <span>3800.-</span></div>
-                <div class="block_1__row">СТИЛЬ/ФОРМА/БЛЕСК <span>2100.-</span></div>
-                <div class="block_1__row">ПЕДИКЮР ДЕТСКИЙ (до 7 лет) <span>2000.-</span></div>
-                <div class="block_1__semi_title">ПЕДИКЮР "ИНТЕНСИВНЫЙ УХОД"</div>
-                <div class="block_1__row">Elemis «Глубокое увлажнение» <span>4500.-</span></div>
-                <div class="block_1__row">St.Barth «Карибское путешествие» <span>4500.-</span></div>
-                <div class="block_1__row">La Ric «Золотое сияние» <span>4500.-</span></div>
-              </div>
-            </div>
-            <div class="block_1__services block_1__services-5 animation animation_bot">
-              <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-3.jpg"></div>
-              <div class="block_1__title">Покрытия и ремонт ногтей</div>
-              <div class="block_5__hide">
-                <div class="block_1__row">ПОКРЫТИЕ ULTRA GEL <span>1800.-</span></div>
-                <div class="block_1__row">АВТОРСКИЙ ЭКСПРЕСС-УХОД <span>1500.-</span></div>
-                <div class="block_1__row">ЛЕЧЕБНЫЙ УХОД ДЛЯ НОГТЕВОЙ ПЛАСТИНЫ STRONG <span>1300.-</span></div>
-                <div class="block_1__row">ФРЕНЧ ПОКРЫТИЕ <span>800.-</span></div>
-                <div class="block_1__row">ДИЗАЙН ОДНОГО НОГТЯ ПРОСТОЙ <span>100.-</span></div>
-                <div class="block_1__row">ДИЗАЙН ОДНОГО НОГТЯ СЛОЖНЫЙ <span>200.-</span></div>
-                <div class="block_1__row">РЕМОНТ И УКРЕПЛЕНИЕ 1-ГО НОГТЯ <span>200.-</span></div>
-                <div class="block_1__row">ПОКРЫТИЕ CHRISTINA FITZGHERALD <span>1000.-</span></div>
-                <div class="block_1__row">ПОКРЫТИЕ SMITH&CULT <span>1000.-</span></div>
-                <div class="block_1__row">ПОКРЫТИЕ ГЕЛЬ-ЛАК <span>1800.-</span></div>
-                <div class="block_1__row">СНЯТИЕ + ПОКРЫТИЕ ГЕЛЬ-ЛАК <span>2300.-</span></div>
-                <div class="block_1__row">ЛЕЧЕБНОЕ ПОКРЫТИЕ IBX <span>1150.-</span></div>
-              </div>
-            </div>
-            <div class="block_1__services block_1__services-5 animation animation_bot">
-              <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-5.jpg"></div>
-              <div class="block_1__title block_1__title-hairs">Волосы</div>
-              <div class="block_5__hide">
-                <div class="block_1__semi_title">СТРИЖКИ</div>
-                <div class="block_1__row">BUSINESS MAN (МУЖСКАЯ СТРИЖКА - 60 МИН) <span>3500.-</span></div>
-                <div class="block_1__row">LIGHT (СТРИЖКА ЧЕЛКИ - 30 МИН) <span>1500.-</span></div>
-                <div class="block_1__row">BUSINESS (СТРИЖКА ЖЕНСКАЯ, ВХОДИТ СУШКА ВОЛОС - 60 МИН) <span>4000.-</span></div>
-                <div class="block_1__row">EASY MAN (СТРИЖКА МУЖСКАЯ ТРИММЕРОМ - 60 МИН) <span>2000.-</span></div>
-                <div class="block_1__row block_1__row-no_border">Cтрижка детей от 6 лет</div>
-                <div class="block_1__semi_title">УКЛАДКИ</div>
-                <div class="block_1__row">EASY (СУШКА ВОЛОС - 30 МИН) <span>1500.-</span></div>
-                <div class="block_1__row">BUSINESS (УКЛАДКА ФЕНОМ ПО ФОРМЕ С ОБЪЕМОМ - 45 МИН) <span>2500.-</span></div>
-                <div class="block_1__row">BUSINESS LONG (ЛОКОНЫ НА БРАШИНГ С ОБЪЕМОМ - 60 МИН) <span>3300.-</span></div>
-                <div class="block_1__row">LIFE STYLE LIGHT (ЛОКОНЫ НА БРАШИНГ НА НАРАЩЕННЫХ ВОЛОСАХ ИЛИ ПРИ ДЛИНЕ БОЛЕЕ 40 СМ - 90 МИН) <span>3800.-</span></div>
-                <div class="block_1__row">LIFE STYLE (ВЕЧЕРНЯЯ ПРИЧЕСКА, ВХОДИТ МЫТЬЕ ВОЛОС - 90 МИНУТ) <span>4900.-</span></div>
-              </div>
-            </div>
-            <div class="block_1__services block_1__services-5 block_1__services-hairs animation animation_bot">
-              <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-8.jpg"></div>
-              <div class="block_1__title block_1__title-hairs">ОКРАШИВАНИЕ COLOR.ME by KEVIN MURPHY</div>
-              <div class="block_5__hide">
-                <div class="block_1__row">Корни (до 2-х см.). <span>5500.-</span></div>
-                <div class="block_1__row">Базовый цвет от Color.me <span>10200.-</span></div>
-                <div class="block_1__semi_title">БАЛАНС ЦВЕТА ОТ COLOR.ME (Окрашивание корней и обновление цвета по длине)</div>
-                <div class="block_1__row">Волосы выше плеч <span>7300.-</span></div>
-                <div class="block_1__row">Ниже плеч/до лопаток <span>8400.-</span></div>
-                <div class="block_1__semi_title">REFRESH ОТ COLOR.ME  (обновление цвета по длине, придание блеска)</div>
-                <div class="block_1__row">Волосы выше плеч <span>4200.-</span></div>
-                <div class="block_1__row">Ниже плеч/до лопаток <span>6600.-</span></div>
-                <div class="block_1__semi_title">Цветокоррекция</div>
-                <div class="block_1__row">Обычная <span>3800.-</span></div>
-                <div class="block_1__row">Сложная <span>от 11000 .-</span></div>
-                <div class="block_1__semi_title">FREE HAND (Открытая техника осветления. Позволяет добиться мягких эффектов на волосах. Создаёт рельеф и визуальный объем.) время выполнение до 3-х часов.</div>
-                <div class="block_1__row">Light (сегмент) <span>3000.-</span></div>
-                <div class="block_1__row">Business волосы выше плеч <span>11000.-</span></div>
-                <div class="block_1__row">Business ниже плеч/до лопаток <span>14000.-</span></div>
-                <div class="block_1__semi_title">АВТОРСКОЕ ОКРАШИВАНИЕ (Закрытые техники осветления, Шатуш, Мелирование, Airtouch. В эту услугу включена Защита Olaplex для сохранения здоровья Ваших волос)</div>
-                <div class="block_1__row">Волосы выше плеч <span>16500.-</span></div>
-                <div class="block_1__row">Ниже плеч/до лопаток <span>20000.-</span></div>
-              </div>
-            </div>
-            <div class="block_1__services block_1__services-5 block_1__services-hairs animation animation_bot">
-              <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-28.jpg"></div>
-              <div class="block_1__title block_1__title-hairs">Окрашивание Goldwell</div>
-              <div class="block_5__hide">
-                <div class="block_1__semi_title">Окрашивание TOPCHIC 60-90 минут</div>
-                <div class="block_1__row">Корни <span>6000.-</span></div>
-                <div class="block_1__row">Волосы до плеч <span>8500.-</span></div>
-                <div class="block_1__row">Ниже плеч-до лопаток <span>9000.-</span></div>
-                <div class="block_1__semi_title">Фитоламинирование волос  Colorance  40минут</div>
-                <div class="block_1__row">Волосы до плеч <span>7500.-</span></div>
-                <div class="block_1__row">Ниже плеч-до лопаток <span>8200.-</span></div>
-                <div class="block_1__semi_title">Color Balancing (баланс цвета )</div>
-                <div class="block_1__row">Волосы до плеч <span>8500.-</span></div>
-                <div class="block_1__row">Ниже плеч-до лопаток <span>9000.-</span></div>
-                <div class="block_1__semi_title">Экспресс-тонирование Colorance 20 минут</div>
-                <div class="block_1__row">Волосы до плеч <span>6000.-</span></div>
-                <div class="block_1__row">Ниже плеч-до лопаток <span>6700.-</span></div>
-                <div class="block_1__semi_title">Элюминирование волос Elumen 75 минут</div>
-                <div class="block_1__row">Волосы до плеч <span>7300.-</span></div>
-                <div class="block_1__row">Ниже плеч-до лопаток <span>8600.-</span></div>
-                <div class="block_1__semi_title">Осветление</div>
-                <div class="block_1__row">Корни <span>4700.-</span></div>
-                <div class="block_1__row">Волосы до плеч <span>7000.-</span></div>
-                <div class="block_1__row">Ниже плеч-до лопаток <span>8300.-</span></div>
-                <div class="block_1__semi_title">Шелковое осветление Silk Lift</div>
-                <div class="block_1__row">Волосы до  плеч <span>7200.-</span></div>
-                <div class="block_1__row">Ниже плеч-до лопаток <span>8500.-</span></div>
-                <div class="block_1__semi_title">Экспресс-коррекция New Blond</div>
-                <div class="block_1__row">Корни <span>3000.-</span></div>
-                <div class="block_1__row">Волосы до  плеч <span>7400.-</span></div>
-                <div class="block_1__row">Ниже плеч-до лопаток <span>8000.-</span></div>
-              </div>
-            </div>
-            <div class="block_1__services block_1__services-5 animation animation_bot">
-              <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-4.jpg" ></div>
-              <div class="block_1__title">Макияж</div>
-              <div class="block_5__hide">
-                <div class="block_1__row">ДНЕВНОЙ <span>2500.-</span></div>
-                <div class="block_1__row">ВЕЧЕРНИЙ <span>5500.-</span></div>
-                <div class="block_1__row">ВИЗАЖ ОТДЕЛЬНЫХ ЗОН <span>500.-</span></div>
-                <div class="block_1__row">КОРРЕКЦИЯ И ОКРАС БРОВЕЙ+УХОД HIGH DEFINITION <span>2500.-</span></div>
-                <div class="block_1__row">ОКРАШИВАНИЕ БРОВЕЙ HIGH DEFINITION <span>1600.-</span></div>
-                <div class="block_1__row">НАРАЩИВАНИЕ РЕСНИЦ <span>6000.-</span></div>
-              </div>
-            </div>
-            <div class="block_1__services block_1__services-5 animation animation_bot">
-              <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-10.jpg" ></div>
-              <div class="block_1__title block_1__title-carry">Уходы для волос</div>
-              <div class="block_5__hide">
-                <div class="block_1__semi_title">Уходы для волос KEVIN MURPHY</div>
-                <div class="block_1__row">Treat.me - сила <span>4000.-</span></div>
-                <div class="block_1__row">Treat.me - увлажнение <span>4000.-</span></div>
-                <div class="block_1__row">Treat.me - анти-эйдж <span>4000.-</span></div>
-                <div class="block_1__row">Treat.me - уплотнение <span>4000.-</span></div>
-                <div class="block_1__semi_title">Обновление и поддержание цвета FABULOSO</div>
-                <div class="block_1__row">Обновление цвета <span>3500.-</span></div>
-                <div class="block_1__row">Наполнение цветом <span>3500.-</span></div>
-                <div class="block_1__row">Цвета пастели <span>3500.-</span></div>
-                <div class="block_1__row">Цветовой акцент <span>3500.-</span></div>
-                <div class="block_1__row">Сияние цвета <span>3500.-</span></div>
-                <div class="block_1__row">Интенсивный блеск-уход <span>2500.-</span></div>
-              </div>
-            </div>
-            <div class="block_1__services block_1__services-carry block_1__services-5 animation animation_bot">
-              <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-11.jpg" ></div>
-              <div class="block_1__title block_1__title-carry">Уходы для волос</div>
-              <div class="block_5__hide">
-                <div class="block_1__semi_title">Уходы для волос DSD de Luxe</div>
-                <div class="block_1__row">Уход против выпадения <br /> Курс лечения 3 месяца <span>4000.-</span></div>
-                <div class="block_1__row">Уход против перхоти <br /> применение 2 раза в неделю до полного исчезновения  <span>3000.-</span></div>
-                <div class="block_1__row">Уход сталь и шелк <span>3000.-</span></div>
-                <div class="block_1__row">Уход для светлых волос и поврежденных после обесывечивания <span>3000.-</span></div>
-                <div class="block_1__row">Уход для мужчин против выпадения «opium» <span>2500.-</span></div>
-                <div class="block_1__semi_title">KERASILK от Goldwell</div>
-                <div class="block_1__row">KERASILK CONTROL <span>4500.-</span></div>
-                <div class="block_1__row">KERASILK RECONSTRUCT <span>5500.-</span></div>
-                <div class="block_1__row">KERASILK RECONSTRUCT TOUCH-up <span>3500.-</span></div>
-                <div class="block_1__row">KERASILK REPOWER <span>5700.-</span></div>
-                <div class="block_1__row">KERASILK REVITALIZE <span>6000.-</span></div>
-              </div>
-            </div>
-            <div class="block_1__services block_1__services-5 animation animation_bot">
-              <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-6.jpg"></div>
-              <div class="block_1__title">ДЕПИЛЯЦИЯ ВОСКОМ LYCON</div>
-              <div class="block_5__hide">
-                <div class="block_1__row">ДЕПИЛЯЦИЯ НОГ (ДО КОЛЕНА) <span>1300.-</span></div>
-                <div class="block_1__row">ДЕПИЛЯЦИЯ РУК (ДО ЛОКТЯ) <span>1300.-</span></div>
-                <div class="block_1__row">ДЕПИЛЯЦИЯ РУК (ПОЛНОСТЬЮ) <span>1600.-</span></div>
-              </div>
-            </div>
-          </div>
-          {% comment %} <div class="block_5__wrp">
-            <div class="block_1__services block_1__services-5">
-              <div class="block_1__title">КОЛЛЕКЦИЯ МАНИКЮР-УХОДОВ С ПОКРЫТИЕМ ЛАКА</div>
-              <div class="block_1__semi_title">МАНИКЮР "БАЗОВЫЙ УХОД"</div>
-              <div class="block_1__row">LA RIC "БИЗНЕС" <span>2600.-</span></div>
-              <div class="block_1__row">CHRISTINA FITZGHERALD "БЕЗВОДНЫЙ" <span>2600.-</span></div>
-              <div class="block_1__row">LA RIC "МУЖСКОЙ" <span>2600.-</span></div>
-              <div class="block_1__row">ДЕТСКИЙ МАНИКЮР (ДО 7 ЛЕТ) <span>1500.-</span></div>
-              <div class="block_1__semi_title">МАНИКЮР "ИНТЕНСИВНЫЙ УХОД"</div>
-              <div class="block_1__row">ST.BARTH "КАРИБСКИЙ" <span>3500.-</span></div>
-              <div class="block_1__row">ELEMIS "УВЛАЖНЕНИЕ" <span>3500.-</span></div>
-              <div class="block_1__row">LA RIC " ЗОЛОТОЕ СИЯНИЕ" <span>3500.-</span></div>
-            </div>
-            <div class="block_1__services block_1__services-5">
-              <div class="block_1__title">КОЛЛЕКЦИЯ ПЕДИКЮР-УХОДОВ С ПОКРЫТИЕМ ЛАКА</div>
-              <div class="block_1__semi_title">ПЕДИКЮР "БАЗОВЫЙ УХОД"</div>
-              <div class="block_1__row">LA RIC "БИЗНЕС" <span>3500.-</span></div>
-              <div class="block_1__row">CHRISTINA FITZGHERALD "БЕЗВОДНЫЙ" <span>3500.-</span></div>
-              <div class="block_1__row">LA RIC "МУЖСКОЙ" <span>3500.-</span></div>
-              <div class="block_1__row">ДЕТСКИЙ ПЕДИКЮР (ДО 7 ЛЕТ) <span>1500.-</span></div>
-              <div class="block_1__semi_title">ПЕДИКЮР "ИНТЕНСИВНЫЙ УХОД"</div>
-              <div class="block_1__row">ELEMIS "УВЛАЖНЕНИЕ" <span>4500.-</span></div>
-              <div class="block_1__row">LA RIC " ЗОЛОТОЕ СИЯНИЕ" <span>4500.-</span></div>
-              <div class="block_1__row">ST.BARTH "КАРИБСКИЙ" <span>4500.-</span></div>
-            </div>
-            <div class="block_1__services block_1__services-5">
-              <div class="block_1__title">ДЕПИЛЯЦИЯ ВОСКОМ</div>
-              <div class="block_1__row">НОГИ ПОЛНОСТЬЮ <span>2800.-</span></div>
-              <div class="block_1__row">РУКИ ДО ЛОКТЯ <span>1300.-</span></div>
-              <div class="block_1__row">РУКИ ПОЛНОСТЬЮ <span>1600.-</span></div>
-              <div class="block_1__row">НОГИ ДО КОЛЕНА <span>1300.-</span></div>
-              <div class="block_1__row">НОГИ ВЫШЕ КОЛЕНА <span>1700.-</span></div>
-            </div>
-            <div class="block_1__services block_1__services-5">
-              <div class="block_1__title">ВИЗАЖ</div>
-              <div class="block_1__row">КОРРЕКЦИЯ БРОВЕЙ <span>1000.-</span></div>
-              <div class="block_1__row">ОКРАС БРОВЕЙ <span>900.-</span></div>
-              <div class="block_1__row">ОКРАС РЕСНИЦ <span>900.-</span></div>
-              <div class="block_1__row">КОРРЕКЦИЯ И ОКРАС БРОВЕЙ <span>1700.-</span></div>
-            </div>
-            <div class="block_1__services block_1__services-5">
-              <div class="block_1__title">МАССАЖ (30 МИНУТ)</div>
-              <div class="block_1__row">МАССАЖ "ЛЕГКОСТЬ НОГ" <span>2500.-</span></div>
-              <div class="block_1__row">МАССАЖ НОГ КЛАССИЧЕСКИЙ <span>2000.-</span></div>
-              <div class="block_1__row">МАССАЖ РУК КЛАССИЧЕСКИЙ <span>1500.-</span></div>
-              <div class="block_1__row">МАССАЖ ГОРЯЧИМИ РАКОВИНАМИ АФРОДИТЫ <span>2500.-</span></div>
-            </div>
-          </div>
-          <div class="block_5__wrp">
-            <div class="block_1__services block_1__services-5">
-              <div class="block_1__title">КОЛЛЕКЦИЯ МАНИКЮР-УХОДОВ С ПОКРЫТИЕМ ЛАКА</div>
-              <div class="block_1__semi_title">МАНИКЮР "БАЗОВЫЙ УХОД"</div>
-              <div class="block_1__row">LA RIC "БИЗНЕС" <span>2600.-</span></div>
-              <div class="block_1__row">CHRISTINA FITZGHERALD "БЕЗВОДНЫЙ" <span>2600.-</span></div>
-              <div class="block_1__row">LA RIC "МУЖСКОЙ" <span>2600.-</span></div>
-              <div class="block_1__row">ДЕТСКИЙ МАНИКЮР (ДО 7 ЛЕТ) <span>1100.-</span></div>
-              <div class="block_1__semi_title">МАНИКЮР "ИНТЕНСИВНЫЙ УХОД"</div>
-              <div class="block_1__row">ST.BARTH "КАРИБСКИЙ" <span>3500.-</span></div>
-              <div class="block_1__row">LA RIC " ЗОЛОТОЕ СИЯНИЕ" <span>3500.-</span></div>
-              <div class="block_1__row">ELEMIS "УВЛАЖНЕНИЕ" <span>3500.-</span></div>
-            </div>
-            <div class="block_1__services block_1__services-5">
-              <div class="block_1__title">КОЛЛЕКЦИЯ ПЕДИКЮР-УХОДОВ С ПОКРЫТИЕМ ЛАКА</div>
-              <div class="block_1__semi_title">ПЕДИКЮР "БАЗОВЫЙ УХОД"</div>
-              <div class="block_1__row">CHRISTINA FITZGHERALD "БЕЗВОДНЫЙ" <span>3500.-</span></div>
-              <div class="block_1__row">ДЕТСКИЙ ПЕДИКЮР (ДО 7 ЛЕТ) <span>1500.-</span></div>
-              <div class="block_1__row">LA RIC "МУЖСКОЙ" <span>3500.-</span></div>
-              <div class="block_1__row">LA RIC "БИЗНЕС" <span>3500.-</span></div>
-              <div class="block_1__semi_title">ПЕДИКЮР "ИНТЕНСИВНЫЙ УХОД"</div>
-              <div class="block_1__row">ST.BARTH "КАРИБСКИЙ" <span>4500.-</span></div>
-              <div class="block_1__row">LA RIC " ЗОЛОТОЕ СИЯНИЕ" <span>4500.-</span></div>
-              <div class="block_1__row">ELEMIS "УВЛАЖНЕНИЕ" <span>4500.-</span></div>
-            </div>
-            <div class="block_1__services block_1__services-5">
-              <div class="block_1__title">ПОКРЫТИЯ</div>
-              <div class="block_1__row">ЛЕЧЕБНОЕ ПОКРЫТИЕ IBX <span>1150.-</span></div>
-              <div class="block_1__row">ФРЕНЧ ЛУННЫЙ <span>800.-</span></div>
-              <div class="block_1__row">СНЯТИЕ SHELLAC <span>500.-</span></div>
-              <div class="block_1__row">ФРЕНЧ ПОКРЫТИЕ <span>600.-</span></div>
-              <div class="block_1__row">ДИЗАЙН ОДНОГО НОГТЯ <span>100.-</span></div>
-              <div class="block_1__row">РЕМОНТ И УКРЕПЛЕНИЕ 1-ОГ НОГТЯ <span>200.-</span></div>
-              <div class="block_1__row">ПОКРЫТИЕ LUXIO <span>1800.-</span></div>
-              <div class="block_1__row">СНЯТИЕ+ДАЛЬНЕЙШЕЕ ПОКРЫТИЕ SHELLAC <span>2300.-</span></div>
-            </div>
-            <div class="block_1__services block_1__services-5">
-              <div class="block_1__title">ВИЗАЖ</div>
-              <div class="block_1__row">КОРРЕКЦИЯ БРОВЕЙ <span>1000.-</span></div>
-              <div class="block_1__row">КОРРЕКЦИЯ И ОКРАС БРОВЕЙ <span>1700.-</span></div>
-              <div class="block_1__row">ДНЕВНОЙ МАКИЯЖ <span>2500.-</span></div>
-              <div class="block_1__row">ВИЗАЖ ОТДЕЛЬНЫХ ЗОН <span>500.-</span></div>
-              <div class="block_1__row">ОКРАС БРОВЕЙ <span>900.-</span></div>
-              <div class="block_1__row">ОКРАС РЕСНИЦ <span>900.-</span></div>
-              <div class="block_1__row">ВЕЧЕРНИЙ МАКИЯЖ <span>5500.-</span></div>
-            </div>
-            <div class="block_1__services block_1__services-5">
-              <div class="block_1__title">ДЕПИЛЯЦИЯ</div>
-              <div class="block_1__row">НОГИ ДО КОЛЕНА <span>1300.-</span></div>
-              <div class="block_1__row">НОГИ ВЫШЕ КОЛЕНА <span>1700.-</span></div>
-              <div class="block_1__row">НОГИ ПОЛНОСТЬЮ <span>2800.-</span></div>
-              <div class="block_1__row">РУКИ ДО ЛОКТЯ <span>1300.-</span></div>
-              <div class="block_1__row">РУКИ ПОЛНОСТЬЮ <span>1600.-</span></div>
-            </div>
-            <div class="block_1__services block_1__services-5">
-              <div class="block_1__title">МАССАЖ (30 МИНУТ)</div>
-              <div class="block_1__row">РУКИ <span>1500.-</span></div>
-              <div class="block_1__row">НОГИ <span>2000.-</span></div>
-            </div>
-            <div class="block_1__services block_1__services-5">
-              <div class="block_1__title">РЕШЕНИЯ ДЛЯ ВОЛОС</div>
-              <div class="block_1__semi_title">УКЛАДКИ</div>
-              <div class="block_1__row">BUSINESS (50 МИНУТ) <span>2000.-</span></div>
-              <div class="block_1__row">EASY (35 МИНУТ) <span>1500.-</span></div>
-              <div class="block_1__row">BUSINESS LONG (60 МИНУТ) <span>2900.-</span></div>
-              <div class="block_1__row">LIFE STYLE LIGHT (С НАРОЩЕННЫМИ) <span>3500.-</span></div>
-              <div class="block_1__row">LIFE STYLE (90 МИНУТ) <span>4500.-</span></div>
-              <div class="block_1__semi_title">СТРИЖКИ</div>
-              <div class="block_1__row">LIGHT (15 МИНУТ) <span>1500.-</span></div>
-              <div class="block_1__row">EASY (40 МИНУТ) <span>2000.-</span></div>
-              <div class="block_1__row">BUSINESS (60 МИНУТ) <span>3500.-</span></div>
-              <div class="block_1__row">SPECIAL STYLE (90 МИНУТ) <span>4500.-</span></div>
-              <div class="block_1__row">EASY MAN <span>2000.-</span></div>
-              <div class="block_1__row">BUSINESS MAN <span>3000.-</span></div>
-              <div class="block_1__semi_title">УХОДЫ ROLLAND</div>
-              <div class="block_1__row">ДЛЯ ГЛАДКОСТИ ВОЛОС <span>1500.-</span></div>
-              <div class="block_1__row">ПРОТИВ СУХОЙ И ЖИРНОЙ ПЕРХОТИ <span>3800.-</span></div>
-              <div class="block_1__row">СПЕЦИАЛЬНЫЙ УХОД ЗА СВЕТЛЫМИ ВОЛОСАМИ <span>1800.-</span></div>
-              <div class="block_1__row">ВОССТАНОВЛЕНИЕ ЦВЕТА <span>1800.-</span></div>
-              <div class="block_1__row">ЛУБОКОЕ УВЛАЖНЕНИЕ ДЛЯ СУХИХ И СЕКУЩИХСЯ ВОЛОС <span>2800.-</span></div>
-              <div class="block_1__row">ПРОТИВ ВЫПАДЕНИЯ ВОЛОС <span>2800.-</span></div>
-            </div>
-          </div> {% endcomment %}
+          <div class="block_7__row_3">Внимание!</div>
+          <div class="block_7__row_4">скидка действует только для новых клиентов, в случае если вы уже записывались к нам - скидка не будет учитываться!</div>
         </div>
-      </section>
-
-      <section class="block_6 animation animation_bot">
-        <h2 class="block_6__h2">Бренды, с которыми мы работаем</h2>
-        <div class="block_6__slider">
-          <div class="block_6__slide">
-            <img class="lazyload" src="#" data-src="/static/img/block_6__slide-1.png" alt="">
-          </div>
-          <div class="block_6__slide">
-            <img class="lazyload" src="#" data-src="/static/img/block_6__slide-2.png" alt="">
-          </div>
-          <div class="block_6__slide">
-            <img class="lazyload" src="#" data-src="/static/img/block_6__slide-3.png" alt="">
-          </div>
-          <div class="block_6__slide">
-            <img class="lazyload" src="#" data-src="/static/img/block_6__slide-4.png" alt="">
-          </div>
-          <div class="block_6__slide">
-            <img class="lazyload" src="#" data-src="/static/img/block_6__slide-5.png" alt="">
-          </div>
-          <div class="block_6__slide">
-            <img class="lazyload" src="#" data-src="/static/img/block_6__slide-6.png" alt="">
-          </div>
-          <div class="block_6__slide">
-            <img class="lazyload" src="#" data-src="/static/img/block_6__slide-7.png" alt="">
-          </div>
-          <div class="block_6__slide">
-            <img class="lazyload" src="#" data-src="/static/img/block_6__slide-8.png" alt="">
-          </div>
-          <div class="block_6__slide">
-            <img class="lazyload" src="#" data-src="/static/img/block_6__slide-9.png" alt="">
-          </div>
-          <div class="block_6__slide">
-            <img class="lazyload" src="#" data-src="/static/img/block_6__slide-10.png" alt="">
-          </div>
-          <div class="block_6__slide">
-            <img class="lazyload" src="#" data-src="/static/img/block_6__slide-11.png" alt="">
-          </div>
-          <div class="block_6__slide">
-            <img class="lazyload" src="#" data-src="/static/img/block_6__slide-12.png" alt="">
-          </div>
-        </div>
-      </section>
-
-      <section id="salons" class="block_8">
-        <h2  class="block_8__h2">Наши салоны</h2>
-        <div class="block_8__wrp">
-          <article data-call-salon-1 data-salon="72fe83ad-42f5-11e4-812c-18cf5e1770e2" class="block_8__block widget_reservi_loader widget animation animation_bot">
-            <div class="block_8__img">
-              <div class="block_8__img_el lazyload" data-bg="/static/img/block_8__block-1.jpg"></div>
-            </div>
-            <h3 class="block_8__h3">KYNSI на Патриарших</h3>
-            <div class="block_8__wp">
-              <div class="block_8__row block_8__row-line">Спиридоньевский пер. 5 стр. 2</div>
-              <div class="block_8__row">Без выходных, с 9:00 до 22:00</div>
-              <div class="block_8__row">Телефон для записи: <a class="mgo-number-11426" href="tel:+74951200303">+7 (495) 120-03-03</a></div>
-            </div>
-            <div class="block_8__button">Записаться в салон</div>
-          </article>
-          <article data-call-salon-2 data-salon="388236cd-fddf-11e6-b3ff-d05349e841da" class="block_8__block widget_reservi_loader widget animation animation_bot">
-            <div class="block_8__img">
-              <div class="block_8__img_el lazyload" data-bg="/static/img/block_8__block-2.jpg"></div>
-            </div>
-            <h3 class="block_8__h3">KYNSI на Петровке</h3>
-            <div class="block_8__wp">
-              <div class="block_8__row block_8__row-line">Петровка 20/1</div>
-              <div class="block_8__row">Без выходных, с 10:00 до 22:00</div>
-              <div class="block_8__row">Телефон для записи: <a class="mgo-number-11408" href="tel:+74951202303">+7 (495) 120-23-03</a></div>
-            </div>
-            <div class="block_8__button">Записаться в салон</div>
-          </article>
-          <article data-call-salon-3 data-salon="9fd686ea-9a48-11e4-8264-40f02f23b9a2" class="block_8__block widget_reservi_loader widget animation animation_bot">
-            <div class="block_8__img">
-              <div class="block_8__img_el lazyload" data-bg="/static/img/block_8__block-3.jpg"></div>
-            </div><h3 class="block_8__h3">KYNSI в Москва Сити</h3>
-            <div class="block_8__wp">
-              <div class="block_8__row block_8__row-line">Пресненская наб., 8, cтр. 1</div>
-              <div class="block_8__row">Без выходных, с 10:00 до 22:00</div>
-              <div class="block_8__row">Телефон для записи: <a class="mgo-number-11427" href="tel:+74951500540">+7 (495) 150-05-40</a></div>
-            </div>
-            <div class="block_8__button">Записаться в салон</div>
-          </article>
-        </div>
-        {% comment %} <div data-call-salon-org class="button button-block_1 button-block_8 widget reservi_button_emulation">Записаться онлайн</div> {% endcomment %}
-      </section>
-
-      <div class="block_3 animation animation_bot">
-        <div class="block_3__slider">
-          <article class="block_3__slide">
-            <div class="block_3__image lazyload" data-bg="/static/img/reviews-1.jpg"></div>
-            <div class="block_3__content">
-              <h2 class="block_3__h2">Валерия Артеменко</h2>
-              <div class="block_3__text">С Кинси у меня случилась любовь с первого взгляда. Это не просто салон куда я прихожу привести себя в порядок. Прибегая между репетициями я расслабляюсь и погружаюсь в замечательную атмосферу комфорта и спокойствия. Но главное достоинство Кинси- это потрясающие мастера, которые исполнят любой ваш каприз)</div>
-            </div>
-          </article>
-          <article class="block_3__slide">
-            <div class="block_3__image lazyload" data-bg="/static/img/reviews-2.jpg"></div>
-            <div class="block_3__content">
-              <h2 class="block_3__h2">Александра Войтенкова</h2>
-              <div class="block_3__text">Kynsi-любимое место. Аккуратные и высококвалифицированные мастера своего дела, приятные цены и атмосфера - что жителям мегаполиса, ох, как важно) Выше всяких похвал!</div>
-            </div>
-          </article>
-          <article class="block_3__slide">
-            <div class="block_3__image lazyload" data-bg="/static/img/reviews-3.jpg"></div>
-            <div class="block_3__content">
-              <h2 class="block_3__h2">Мария Виноградова</h2>
-              <div class="block_3__text">Для меня Kynsi - это пожалуй единственный салон в Москве, где можно действительно расслабиться. Тут все на высшем уровне : персонал, обслуживание, уход и прекрасный интерьер. Каждый раз после посещения Kynsi, мои маникюр и педикюр всегда в идеальном состоянии и служат мне очень долго. Похожих салонов в Москве я пока еще не встречала.</div>
-            </div>
-          </article>
-          <article class="block_3__slide">
-            <div class="block_3__image lazyload" data-bg="/static/img/reviews-4.jpg"></div>
-            <div class="block_3__content">
-              <h2 class="block_3__h2">Веро Холмова</h2>
-              <div class="block_3__text">Давно заметила за собой некий снобизм что касается интерьеров, будь то ресторан, квартира, кинотеатр. Kynsi, в этом плане меня приятно поразил: локанично, минималистично, а что главное для дома красоты-функционально. Сочетание белого цвета, дерева, живых стен и запаха лаванды от расслабляющего воротничка, который тебе заботливо кладут на хрупкие, уставшие плечи - незабываемо. Здесь работают настоящие профессионалы, всегда оценка 5+.</div>
-            </div>
-          </article>
-          <article class="block_3__slide">
-            <div class="block_3__image lazyload" data-bg="/static/img/reviews-5.jpg"></div>
-            <div class="block_3__content">
-              <h2 class="block_3__h2">Мария Лихтенфельд</h2>
-              <div class="block_3__text">С появлением нового KYNSI можно забыть о всех ярлыках "салонов красоты" и "маникюрных студий". Это футуристичное, многофункциональное пространство, в котором пропадаешь, отрываясь от суеты реальности. При этом - отличный ногтевой сервис, любимая подборка фильмов и постоянное предвкушение новых сюрпризов.</div>
-            </div>
-          </article>
-          <article class="block_3__slide">
-            <div class="block_3__image lazyload" data-bg="/static/img/reviews-6.jpg"></div>
-            <div class="block_3__content">
-              <h2 class="block_3__h2">Артём Королев</h2>
-              <div class="block_3__text">Я не уделяю столько времени и внимания своему маникюру, как девушки, но ногти всегда держу в хорошем состоянии. В Kynsi все происходит быстро и приятно. Плюс там работают самые красивые девушки Москвы :) Так что мне очень нравится!</div>
-            </div>
-          </article>
-          <article class="block_3__slide">
-            <div class="block_3__image lazyload" data-bg="/static/img/reviews-7.jpg"></div>
-            <div class="block_3__content">
-              <h2 class="block_3__h2">Вячеслав Глушков</h2>
-              <div class="block_3__text">Я про Kynsi слышу регулярно и достаточно давно от своих вечно взволнованных состоянием маникюра подруг. А недавно на смену моим скитаниям по разным салонам пришел новый Kynsi прямо рядом с домом. Благо сервис на правильном уровне, думать и решать особо не пришлось. И да, когда-нибудь я-таки попробую маникюр "по локоть" под названием, кажется, Кристина</div>
-            </div>
-          </article>
-        </div>
+        <div class="show_modal button button-block_1" data-optin-slug="cvgofril3trai0xyitge">Получить скидку</div>
       </div>
-
-      <div class="block_9">
-        <div class="block_9__slider animation animation_bot">
-          <a href="https://www.instagram.com/p/BpM7dqQHUmz/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-1.jpg"></a>
-          <a href="https://www.instagram.com/p/BsdpbuLHx2H/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-9.jpg"></a>
-          <a href="https://www.instagram.com/p/Br5Z6jTnbv-/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-10.jpg"></a>
-        </div>
-        <div class="block_9__slider animation animation_bot">
-          <a href="https://www.instagram.com/p/Behi9-vB28R/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-2.jpg"></a>
-          <a href="https://www.instagram.com/p/Br0nKd5HEV7/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-11.jpg"></a>
-          <a href="https://www.instagram.com/p/BruH1vxnEdJ/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-12.jpg"></a>
-        </div>
-        <div class="block_9__slider animation animation_bot">
-          <a href="https://www.instagram.com/p/BeXuOZQFioZ/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-3.jpg"></a>
-          <a href="https://www.instagram.com/p/BrmWPc4Hz0t/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-13.jpg"></a>
-          <a href="https://www.instagram.com/p/BqrLQwwH5vV/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-14.jpg"></a>
-        </div>
-        <div class="block_9__slider animation animation_bot">
-          <a href="https://www.instagram.com/p/Bp6thdXHl7L/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-4.jpg"></a>
-          <a href="https://www.instagram.com/p/BphzahZnNts/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-15.jpg"></a>
-          <a href="https://www.instagram.com/p/Bn0ze-BhuYw/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-16.jpg"></a>
-        </div>
-        <div class="block_9__slider animation animation_bot">
-          <a href="https://www.instagram.com/p/BdzUZJFl3Qr/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-5.jpg"></a>
-          <a href="https://www.instagram.com/p/BnTJZBMBAzz/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-17.jpg"></a>
-          <a href="https://www.instagram.com/p/Bl-Nh3Lh5hW/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-18.jpg"></a>
-        </div>
-        <div class="block_9__slider animation animation_bot">
-          <a href="https://www.instagram.com/p/BbuS7PFldQa/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-6.jpg"></a>
-          <a href="https://www.instagram.com/p/Bhl0uQkBjH9/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-19.jpg"></a>
-          <a href="https://www.instagram.com/p/BgV6BVvHN7E/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-20.jpg"></a>
-        </div>
-        <div class="block_9__slider animation animation_bot">
-          <a href="https://www.instagram.com/p/Ba6o8GIlT8-/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-7.jpg"></a>
-          <a href="https://www.instagram.com/p/BeAQrPdl1ab/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-21.jpg"></a>
-          <a href="https://www.instagram.com/p/Bdw5Ez5FqSW/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-22.jpg"></a>
-        </div>
-        <div class="block_9__slider animation animation_bot">
-          <a href="https://www.instagram.com/p/BcZQaB9ltB-/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-8.jpg"></a>
-          <a href="https://www.instagram.com/p/BczPTXUFABI/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-23.jpg"></a>
-          <a href="https://www.instagram.com/p/BcmcCZ8FeKh/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-24.jpg"></a>
-        </div>
-      </div>
-
-      <div class="map animation animation_bot">
-        <iframe class="lazyload" title="yandexMap" data-src="https://yandex.ru/map-widget/v1/?um=constructor%3Ac2cc93efc49dcd1f934e880248f1c3531200eb3a94cc165c483d659df6bb1630&amp;source=constructor"></iframe>
-      </div>
-
-      <div class="footer animation animation_bot">
-        <div class="footer__top">
-          <article class="footer__address">
-            <h3 class="footer__h3">KYNSI на Патриарших</h3>
-            <div class="footer__wrp">
-              <div class="footer__row footer__row-line">Спиридоньевский пер. 5 стр. 2</div>
-              <div class="footer__row">Без выходных, с 9:00 до 22:00</div>
-              <div class="footer__row">Телефон для записи: <a class="mgo-number-11426" href="tel:+74951200303">+7 (495) 120-03-03</a></div>
-            </div>
-          </article>
-          <article class="footer__address">
-            <h3 class="footer__h3">KYNSI на Петровке</h3>
-            <div class="footer__wrp">
-              <div class="footer__row footer__row-line">Петровка 20/1</div>
-              <div class="footer__row">Без выходных, с 10:00 до 22:00</div>
-              <div class="footer__row">Телефон для записи: <a class="mgo-number-11408" href="tel:+74951202303">+7 (495) 120-23-03</a></div>
-            </div>
-          </article>
-          <article class="footer__address">
-            <h3 class="footer__h3">KYNSI в Москва Сити</h3>
-            <div class="footer__wrp">
-              <div class="footer__row footer__row-line">Пресненская наб., 8, cтр. 1</div>
-              <div class="footer__row">Без выходных, с 10:00 до 22:00</div>
-              <div class="footer__row">Телефон для записи: <a class="mgo-number-11427" href="tel:+74951500540">+7 (495) 150-05-40</a></div>
-            </div>
-          </article>
-        </div>
-        <div class="footer__bottom">
-          <div class="header__socials">
-            <a href="https://www.facebook.com/kynsi.salon" aria-label="facebook" rel="noopener" target="_blank" class="header__social"><svg width="5" height="12" viewBox="0 0 5 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.31482 12V5.12256H0.0623779V4.0752H1.31482V3.26221C1.31482 2.4126 1.54187 1.75586 1.99597 1.29199C2.45007 0.828125 3.09216 0.596191 3.92224 0.596191C4.23474 0.596191 4.5448 0.637695 4.85242 0.720703L4.77917 1.81934C4.54968 1.77539 4.30554 1.75342 4.04675 1.75342C3.6073 1.75342 3.26794 1.88281 3.02869 2.1416C2.78943 2.39551 2.6698 2.76172 2.6698 3.24023V4.0752H4.36169V5.12256H2.6698V12H1.31482Z"/></svg></a>
-            {% comment %}<a href="https://vk.com/kynsi" aria-label="vk" rel="noopener"target="_blank" class="header__social"><svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.778198 10V0.046875H4.0321C5.11218 0.046875 5.92338 0.270182 6.4657 0.716797C7.01257 1.16341 7.28601 1.82422 7.28601 2.69922C7.28601 3.16406 7.15385 3.5765 6.88953 3.93652C6.6252 4.29199 6.26518 4.56771 5.80945 4.76367C6.34721 4.91406 6.77104 5.20117 7.08093 5.625C7.39539 6.04427 7.55261 6.54557 7.55261 7.12891C7.55261 8.02214 7.26322 8.72396 6.68445 9.23438C6.10567 9.74479 5.28764 10 4.23035 10H0.778198ZM2.0907 5.34473V8.92676H4.25769C4.86837 8.92676 5.34916 8.76953 5.70007 8.45508C6.05554 8.13607 6.23328 7.69857 6.23328 7.14258C6.23328 5.94401 5.58158 5.34473 4.2782 5.34473H2.0907ZM2.0907 4.29199H4.07312C4.64734 4.29199 5.10535 4.14844 5.44714 3.86133C5.7935 3.57422 5.96667 3.18457 5.96667 2.69238C5.96667 2.14551 5.80717 1.74902 5.48816 1.50293C5.16915 1.25228 4.6838 1.12695 4.0321 1.12695H2.0907V4.29199Z"/></svg></a>{% endcomment %}
-            <a href="https://www.instagram.com/kynsisalon" aria-label="instagram" rel="noopener" target="_blank" class="header__social"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.6271 0.00166063C8.59584 0.00166063 9.56464 -0.00282375 10.5333 0.00294578C11.4447 0.00838719 12.3007 0.216227 13.0423 0.77028C14.0109 1.49384 14.5065 2.48219 14.5987 3.6748C14.6312 4.09453 14.6211 4.5179 14.6216 4.93961C14.6238 6.57503 14.6226 8.21046 14.6225 9.8459C14.6224 10.5139 14.5295 11.166 14.2468 11.7768C13.6735 13.0158 12.6733 13.6931 11.3538 13.9279C11.0786 13.9768 10.7948 13.9951 10.5149 13.9959C8.58259 14.0016 6.65026 14.0003 4.71796 13.9983C3.71314 13.9973 2.79415 13.7319 2.01101 13.08C1.21535 12.4177 0.795484 11.5516 0.664877 10.5361C0.642346 10.3609 0.628551 10.1833 0.628387 10.0068C0.6265 7.97551 0.614236 5.94413 0.634143 3.91307C0.645025 2.80338 1.01452 1.8195 1.8406 1.04424C2.52582 0.401221 3.35873 0.0652348 4.2843 0.032354C5.39725 -0.00718507 6.51269 0.0229888 7.62706 0.0229888C7.62707 0.0158657 7.62707 0.00875633 7.6271 0.00166063ZM7.61616 12.7062C8.54831 12.7062 9.48043 12.71 10.4125 12.7036C10.6563 12.702 10.9036 12.6899 11.1428 12.6466C12.0564 12.4814 12.7511 12.0232 13.1151 11.1335C13.3001 10.6816 13.3605 10.1967 13.3683 9.72704C13.3989 7.90497 13.3817 6.08209 13.3795 4.25951C13.3793 4.06206 13.3771 3.86241 13.3492 3.66758C13.2239 2.79275 12.8447 2.0757 12.0396 1.63965C11.5902 1.39627 11.1023 1.30439 10.5953 1.30422C8.6425 1.30365 6.68973 1.30307 4.73698 1.30541C4.5605 1.30563 4.38246 1.31539 4.20785 1.33993C3.21327 1.47958 2.48069 1.96974 2.11407 2.93407C1.96611 3.32322 1.91883 3.73098 1.91875 4.14498C1.91846 6.05088 1.91663 7.95674 1.92125 9.86266C1.92181 10.0958 1.93921 10.3324 1.98095 10.5615C2.1661 11.5781 2.73295 12.2768 3.74247 12.5577C4.07888 12.6513 4.43849 12.6926 4.78867 12.6997C5.73085 12.7186 6.67362 12.7061 7.61616 12.7062Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M11.231 6.97776C11.2301 8.9708 9.60395 10.5919 7.61037 10.587C5.61604 10.5822 4.00995 8.97241 4.00879 6.97724C4.00763 4.98427 5.63135 3.36306 7.62641 3.36524C9.60426 3.36737 11.2319 4.99856 11.231 6.97776ZM7.62125 9.28583C8.89283 9.2868 9.94013 8.24027 9.93793 6.97084C9.93573 5.71021 8.8911 4.66361 7.62987 4.65849C6.36012 4.65333 5.31333 5.69666 5.31064 6.97004C5.30796 8.24525 6.34518 9.28482 7.62125 9.28583Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M11.3649 4.09248C10.9134 4.08845 10.5576 3.72721 10.559 3.27446C10.5604 2.81658 10.9252 2.45757 11.3858 2.46071C11.8321 2.4638 12.1958 2.83215 12.1944 3.27971C12.1931 3.73362 11.8226 4.09657 11.3649 4.09248Z"/></svg></a>
-          </div>
-          <div class="header__emails">
-            <div class="header__email">Вопросы и предложения: <a href="mailto:hello@kynsi.ru">hello@kynsi.ru</a></div>
-            <div class="header__email">Работайте с нами: <a href="mailto:work@kynsi.ru">work@kynsi.ru</a></div>
-            <div class="header__email">Связь для прессы: <a href="mailto:pr@kynsi.ru">pr@kynsi.ru</a></div>
-          </div>
-        </div>
-      </div>
-
     </div>
-    
-    <script src="/static/js/lib/jquery/jquery.js"></script>
-    <script src="//reservi.ru/4.0/22606264/"></script>
-    <script>
-      $(document).ready(function(){
-          csrftoken = $("[name=csrfmiddlewaretoken]").val();
-      })
-    </script>
-    <script src="/static/js/lib/slick/slick.min.js"></script>
-    <script src="/static/js/lib/lazysizes/lazysizes.js"></script>
-    <script src="/static/js/csrf.js"></script>
 
-    <script src="/static/js/scripts.js?v=16032020"></script>
+    <section id="services" class="block_5">
+      <h2 class="block_5__h2 animation animation_left">Услуги</h2>
+      <div class="block_5__name animation animation_left">Услуги по уходу за волосами и лицом только в KYNSI на Патриарших прудах и в Москва-Сити</div>
+      {% comment %} <div class="block_5__top">
+        <div class="block_5__name active">KYNSI на Патриарших</div>
+        <div class="block_5__name">KYNSI на Петровке</div>
+        <div class="block_5__name">KYNSI в Москва Сити</div>
+      </div> {% endcomment %}
+      <div>
+        <div class="block_5__wrp active">
+          <div class="block_1__services block_1__services-5 animation animation_bot">
+            <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-1.jpg"></div>
+            <div class="block_1__title">Маникюры</div>
+            <div class="block_5__hide">
+              <div class="block_1__semi_title">МАНИКЮР "БАЗОВЫЙ УХОД"</div>
+              <div class="block_1__row">Christina Fitzgerald «Ultimate» <span>2900.-</span></div>
+              <div class="block_1__row">Lа Ric «Аромапутешествие» <span>2900.-</span></div>
+              <div class="block_1__row">La Ric «Homme» <span>2900.-</span></div>
+              <div class="block_1__row">СТИЛЬ/ФОРМА/БЛЕСК <span>1800.-</span></div>
+              <div class="block_1__row">МАНИКЮР ДЕТСКИЙ (до 7 лет) <span>1600.-</span></div>
+              <div class="block_1__semi_title">МАНИКЮР "ИНТЕНСИВНЫЙ УХОД"</div>
+              <div class="block_1__row">Elemis «Глубокое увлажнение»  <span>3500.-</span></div>
+              <div class="block_1__row">St.Barth «Карибское путешествие» <span>3500.-</span></div>
+              <div class="block_1__row">La Ric «Золотое сияние» <span>3500.-</span></div>
+            </div>
+          </div>
+          <div class="block_1__services block_1__services-5 animation animation_bot">
+            <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-2.jpg"></div>
+            <div class="block_1__title">Педикюры</div>
+            <div class="block_5__hide">
+              <div class="block_1__semi_title">ПЕДИКЮР «БАЗОВЫЙ УХОД»</div>
+              <div class="block_1__row">Christina Fitzgerald «Ultimate» <span>3800.-</span></div>
+              <div class="block_1__row">Lа Ric «Аромапутешествие» <span>3800.-</span></div>
+              <div class="block_1__row">La Ric «Homme» <span>3800.-</span></div>
+              <div class="block_1__row">СТИЛЬ/ФОРМА/БЛЕСК <span>2100.-</span></div>
+              <div class="block_1__row">ПЕДИКЮР ДЕТСКИЙ (до 7 лет) <span>2000.-</span></div>
+              <div class="block_1__semi_title">ПЕДИКЮР "ИНТЕНСИВНЫЙ УХОД"</div>
+              <div class="block_1__row">Elemis «Глубокое увлажнение» <span>4500.-</span></div>
+              <div class="block_1__row">St.Barth «Карибское путешествие» <span>4500.-</span></div>
+              <div class="block_1__row">La Ric «Золотое сияние» <span>4500.-</span></div>
+            </div>
+          </div>
+          <div class="block_1__services block_1__services-5 animation animation_bot">
+            <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-3.jpg"></div>
+            <div class="block_1__title">Покрытия и ремонт ногтей</div>
+            <div class="block_5__hide">
+              <div class="block_1__row">ПОКРЫТИЕ ULTRA GEL <span>1800.-</span></div>
+              <div class="block_1__row">АВТОРСКИЙ ЭКСПРЕСС-УХОД <span>1500.-</span></div>
+              <div class="block_1__row">ЛЕЧЕБНЫЙ УХОД ДЛЯ НОГТЕВОЙ ПЛАСТИНЫ STRONG <span>1300.-</span></div>
+              <div class="block_1__row">ФРЕНЧ ПОКРЫТИЕ <span>800.-</span></div>
+              <div class="block_1__row">ДИЗАЙН ОДНОГО НОГТЯ ПРОСТОЙ <span>100.-</span></div>
+              <div class="block_1__row">ДИЗАЙН ОДНОГО НОГТЯ СЛОЖНЫЙ <span>200.-</span></div>
+              <div class="block_1__row">РЕМОНТ И УКРЕПЛЕНИЕ 1-ГО НОГТЯ <span>200.-</span></div>
+              <div class="block_1__row">ПОКРЫТИЕ CHRISTINA FITZGHERALD <span>1000.-</span></div>
+              <div class="block_1__row">ПОКРЫТИЕ SMITH&CULT <span>1000.-</span></div>
+              <div class="block_1__row">ПОКРЫТИЕ ГЕЛЬ-ЛАК <span>1800.-</span></div>
+              <div class="block_1__row">СНЯТИЕ + ПОКРЫТИЕ ГЕЛЬ-ЛАК <span>2300.-</span></div>
+              <div class="block_1__row">ЛЕЧЕБНОЕ ПОКРЫТИЕ IBX <span>1150.-</span></div>
+            </div>
+          </div>
+          <div class="block_1__services block_1__services-5 animation animation_bot">
+            <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-5.jpg"></div>
+            <div class="block_1__title block_1__title-hairs">Волосы</div>
+            <div class="block_5__hide">
+              <div class="block_1__semi_title">СТРИЖКИ</div>
+              <div class="block_1__row">BUSINESS MAN (МУЖСКАЯ СТРИЖКА - 60 МИН) <span>3500.-</span></div>
+              <div class="block_1__row">LIGHT (СТРИЖКА ЧЕЛКИ - 30 МИН) <span>1500.-</span></div>
+              <div class="block_1__row">BUSINESS (СТРИЖКА ЖЕНСКАЯ, ВХОДИТ СУШКА ВОЛОС - 60 МИН) <span>4000.-</span></div>
+              <div class="block_1__row">EASY MAN (СТРИЖКА МУЖСКАЯ ТРИММЕРОМ - 60 МИН) <span>2000.-</span></div>
+              <div class="block_1__row block_1__row-no_border">Cтрижка детей от 6 лет</div>
+              <div class="block_1__semi_title">УКЛАДКИ</div>
+              <div class="block_1__row">EASY (СУШКА ВОЛОС - 30 МИН) <span>1500.-</span></div>
+              <div class="block_1__row">BUSINESS (УКЛАДКА ФЕНОМ ПО ФОРМЕ С ОБЪЕМОМ - 45 МИН) <span>2500.-</span></div>
+              <div class="block_1__row">BUSINESS LONG (ЛОКОНЫ НА БРАШИНГ С ОБЪЕМОМ - 60 МИН) <span>3300.-</span></div>
+              <div class="block_1__row">LIFE STYLE LIGHT (ЛОКОНЫ НА БРАШИНГ НА НАРАЩЕННЫХ ВОЛОСАХ ИЛИ ПРИ ДЛИНЕ БОЛЕЕ 40 СМ - 90 МИН) <span>3800.-</span></div>
+              <div class="block_1__row">LIFE STYLE (ВЕЧЕРНЯЯ ПРИЧЕСКА, ВХОДИТ МЫТЬЕ ВОЛОС - 90 МИНУТ) <span>4900.-</span></div>
+            </div>
+          </div>
+          <div class="block_1__services block_1__services-5 block_1__services-hairs animation animation_bot">
+            <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-8.jpg"></div>
+            <div class="block_1__title block_1__title-hairs">ОКРАШИВАНИЕ COLOR.ME by KEVIN MURPHY</div>
+            <div class="block_5__hide">
+              <div class="block_1__row">Корни (до 2-х см.). <span>5500.-</span></div>
+              <div class="block_1__row">Базовый цвет от Color.me <span>10200.-</span></div>
+              <div class="block_1__semi_title">БАЛАНС ЦВЕТА ОТ COLOR.ME (Окрашивание корней и обновление цвета по длине)</div>
+              <div class="block_1__row">Волосы выше плеч <span>7300.-</span></div>
+              <div class="block_1__row">Ниже плеч/до лопаток <span>8400.-</span></div>
+              <div class="block_1__semi_title">REFRESH ОТ COLOR.ME  (обновление цвета по длине, придание блеска)</div>
+              <div class="block_1__row">Волосы выше плеч <span>4200.-</span></div>
+              <div class="block_1__row">Ниже плеч/до лопаток <span>6600.-</span></div>
+              <div class="block_1__semi_title">Цветокоррекция</div>
+              <div class="block_1__row">Обычная <span>3800.-</span></div>
+              <div class="block_1__row">Сложная <span>от 11000 .-</span></div>
+              <div class="block_1__semi_title">FREE HAND (Открытая техника осветления. Позволяет добиться мягких эффектов на волосах. Создаёт рельеф и визуальный объем.) время выполнение до 3-х часов.</div>
+              <div class="block_1__row">Light (сегмент) <span>3000.-</span></div>
+              <div class="block_1__row">Business волосы выше плеч <span>11000.-</span></div>
+              <div class="block_1__row">Business ниже плеч/до лопаток <span>14000.-</span></div>
+              <div class="block_1__semi_title">АВТОРСКОЕ ОКРАШИВАНИЕ (Закрытые техники осветления, Шатуш, Мелирование, Airtouch. В эту услугу включена Защита Olaplex для сохранения здоровья Ваших волос)</div>
+              <div class="block_1__row">Волосы выше плеч <span>16500.-</span></div>
+              <div class="block_1__row">Ниже плеч/до лопаток <span>20000.-</span></div>
+            </div>
+          </div>
+          <div class="block_1__services block_1__services-5 block_1__services-hairs animation animation_bot">
+            <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-28.jpg"></div>
+            <div class="block_1__title block_1__title-hairs">Окрашивание Goldwell</div>
+            <div class="block_5__hide">
+              <div class="block_1__semi_title">Окрашивание TOPCHIC 60-90 минут</div>
+              <div class="block_1__row">Корни <span>6000.-</span></div>
+              <div class="block_1__row">Волосы до плеч <span>8500.-</span></div>
+              <div class="block_1__row">Ниже плеч-до лопаток <span>9000.-</span></div>
+              <div class="block_1__semi_title">Фитоламинирование волос  Colorance  40минут</div>
+              <div class="block_1__row">Волосы до плеч <span>7500.-</span></div>
+              <div class="block_1__row">Ниже плеч-до лопаток <span>8200.-</span></div>
+              <div class="block_1__semi_title">Color Balancing (баланс цвета )</div>
+              <div class="block_1__row">Волосы до плеч <span>8500.-</span></div>
+              <div class="block_1__row">Ниже плеч-до лопаток <span>9000.-</span></div>
+              <div class="block_1__semi_title">Экспресс-тонирование Colorance 20 минут</div>
+              <div class="block_1__row">Волосы до плеч <span>6000.-</span></div>
+              <div class="block_1__row">Ниже плеч-до лопаток <span>6700.-</span></div>
+              <div class="block_1__semi_title">Элюминирование волос Elumen 75 минут</div>
+              <div class="block_1__row">Волосы до плеч <span>7300.-</span></div>
+              <div class="block_1__row">Ниже плеч-до лопаток <span>8600.-</span></div>
+              <div class="block_1__semi_title">Осветление</div>
+              <div class="block_1__row">Корни <span>4700.-</span></div>
+              <div class="block_1__row">Волосы до плеч <span>7000.-</span></div>
+              <div class="block_1__row">Ниже плеч-до лопаток <span>8300.-</span></div>
+              <div class="block_1__semi_title">Шелковое осветление Silk Lift</div>
+              <div class="block_1__row">Волосы до  плеч <span>7200.-</span></div>
+              <div class="block_1__row">Ниже плеч-до лопаток <span>8500.-</span></div>
+              <div class="block_1__semi_title">Экспресс-коррекция New Blond</div>
+              <div class="block_1__row">Корни <span>3000.-</span></div>
+              <div class="block_1__row">Волосы до  плеч <span>7400.-</span></div>
+              <div class="block_1__row">Ниже плеч-до лопаток <span>8000.-</span></div>
+            </div>
+          </div>
+          <div class="block_1__services block_1__services-5 animation animation_bot">
+            <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-4.jpg" ></div>
+            <div class="block_1__title">Макияж</div>
+            <div class="block_5__hide">
+              <div class="block_1__row">ДНЕВНОЙ <span>2500.-</span></div>
+              <div class="block_1__row">ВЕЧЕРНИЙ <span>5500.-</span></div>
+              <div class="block_1__row">ВИЗАЖ ОТДЕЛЬНЫХ ЗОН <span>500.-</span></div>
+              <div class="block_1__row">КОРРЕКЦИЯ И ОКРАС БРОВЕЙ+УХОД HIGH DEFINITION <span>2500.-</span></div>
+              <div class="block_1__row">ОКРАШИВАНИЕ БРОВЕЙ HIGH DEFINITION <span>1600.-</span></div>
+              <div class="block_1__row">НАРАЩИВАНИЕ РЕСНИЦ <span>6000.-</span></div>
+            </div>
+          </div>
+          <div class="block_1__services block_1__services-5 animation animation_bot">
+            <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-10.jpg" ></div>
+            <div class="block_1__title block_1__title-carry">Уходы для волос</div>
+            <div class="block_5__hide">
+              <div class="block_1__semi_title">Уходы для волос KEVIN MURPHY</div>
+              <div class="block_1__row">Treat.me - сила <span>4000.-</span></div>
+              <div class="block_1__row">Treat.me - увлажнение <span>4000.-</span></div>
+              <div class="block_1__row">Treat.me - анти-эйдж <span>4000.-</span></div>
+              <div class="block_1__row">Treat.me - уплотнение <span>4000.-</span></div>
+              <div class="block_1__semi_title">Обновление и поддержание цвета FABULOSO</div>
+              <div class="block_1__row">Обновление цвета <span>3500.-</span></div>
+              <div class="block_1__row">Наполнение цветом <span>3500.-</span></div>
+              <div class="block_1__row">Цвета пастели <span>3500.-</span></div>
+              <div class="block_1__row">Цветовой акцент <span>3500.-</span></div>
+              <div class="block_1__row">Сияние цвета <span>3500.-</span></div>
+              <div class="block_1__row">Интенсивный блеск-уход <span>2500.-</span></div>
+            </div>
+          </div>
+          <div class="block_1__services block_1__services-carry block_1__services-5 animation animation_bot">
+            <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-11.jpg" ></div>
+            <div class="block_1__title block_1__title-carry">Уходы для волос</div>
+            <div class="block_5__hide">
+              <div class="block_1__semi_title">Уходы для волос DSD de Luxe</div>
+              <div class="block_1__row">Уход против выпадения <br /> Курс лечения 3 месяца <span>4000.-</span></div>
+              <div class="block_1__row">Уход против перхоти <br /> применение 2 раза в неделю до полного исчезновения  <span>3000.-</span></div>
+              <div class="block_1__row">Уход сталь и шелк <span>3000.-</span></div>
+              <div class="block_1__row">Уход для светлых волос и поврежденных после обесывечивания <span>3000.-</span></div>
+              <div class="block_1__row">Уход для мужчин против выпадения «opium» <span>2500.-</span></div>
+              <div class="block_1__semi_title">KERASILK от Goldwell</div>
+              <div class="block_1__row">KERASILK CONTROL <span>4500.-</span></div>
+              <div class="block_1__row">KERASILK RECONSTRUCT <span>5500.-</span></div>
+              <div class="block_1__row">KERASILK RECONSTRUCT TOUCH-up <span>3500.-</span></div>
+              <div class="block_1__row">KERASILK REPOWER <span>5700.-</span></div>
+              <div class="block_1__row">KERASILK REVITALIZE <span>6000.-</span></div>
+            </div>
+          </div>
+          <div class="block_1__services block_1__services-5 animation animation_bot">
+            <div class="block_5__img lazyload" data-bg="/static/img/block_5__img-6.jpg"></div>
+            <div class="block_1__title">ДЕПИЛЯЦИЯ ВОСКОМ LYCON</div>
+            <div class="block_5__hide">
+              <div class="block_1__row">ДЕПИЛЯЦИЯ НОГ (ДО КОЛЕНА) <span>1300.-</span></div>
+              <div class="block_1__row">ДЕПИЛЯЦИЯ РУК (ДО ЛОКТЯ) <span>1300.-</span></div>
+              <div class="block_1__row">ДЕПИЛЯЦИЯ РУК (ПОЛНОСТЬЮ) <span>1600.-</span></div>
+            </div>
+          </div>
+        </div>
+        {% comment %} <div class="block_5__wrp">
+          <div class="block_1__services block_1__services-5">
+            <div class="block_1__title">КОЛЛЕКЦИЯ МАНИКЮР-УХОДОВ С ПОКРЫТИЕМ ЛАКА</div>
+            <div class="block_1__semi_title">МАНИКЮР "БАЗОВЫЙ УХОД"</div>
+            <div class="block_1__row">LA RIC "БИЗНЕС" <span>2600.-</span></div>
+            <div class="block_1__row">CHRISTINA FITZGHERALD "БЕЗВОДНЫЙ" <span>2600.-</span></div>
+            <div class="block_1__row">LA RIC "МУЖСКОЙ" <span>2600.-</span></div>
+            <div class="block_1__row">ДЕТСКИЙ МАНИКЮР (ДО 7 ЛЕТ) <span>1500.-</span></div>
+            <div class="block_1__semi_title">МАНИКЮР "ИНТЕНСИВНЫЙ УХОД"</div>
+            <div class="block_1__row">ST.BARTH "КАРИБСКИЙ" <span>3500.-</span></div>
+            <div class="block_1__row">ELEMIS "УВЛАЖНЕНИЕ" <span>3500.-</span></div>
+            <div class="block_1__row">LA RIC " ЗОЛОТОЕ СИЯНИЕ" <span>3500.-</span></div>
+          </div>
+          <div class="block_1__services block_1__services-5">
+            <div class="block_1__title">КОЛЛЕКЦИЯ ПЕДИКЮР-УХОДОВ С ПОКРЫТИЕМ ЛАКА</div>
+            <div class="block_1__semi_title">ПЕДИКЮР "БАЗОВЫЙ УХОД"</div>
+            <div class="block_1__row">LA RIC "БИЗНЕС" <span>3500.-</span></div>
+            <div class="block_1__row">CHRISTINA FITZGHERALD "БЕЗВОДНЫЙ" <span>3500.-</span></div>
+            <div class="block_1__row">LA RIC "МУЖСКОЙ" <span>3500.-</span></div>
+            <div class="block_1__row">ДЕТСКИЙ ПЕДИКЮР (ДО 7 ЛЕТ) <span>1500.-</span></div>
+            <div class="block_1__semi_title">ПЕДИКЮР "ИНТЕНСИВНЫЙ УХОД"</div>
+            <div class="block_1__row">ELEMIS "УВЛАЖНЕНИЕ" <span>4500.-</span></div>
+            <div class="block_1__row">LA RIC " ЗОЛОТОЕ СИЯНИЕ" <span>4500.-</span></div>
+            <div class="block_1__row">ST.BARTH "КАРИБСКИЙ" <span>4500.-</span></div>
+          </div>
+          <div class="block_1__services block_1__services-5">
+            <div class="block_1__title">ДЕПИЛЯЦИЯ ВОСКОМ</div>
+            <div class="block_1__row">НОГИ ПОЛНОСТЬЮ <span>2800.-</span></div>
+            <div class="block_1__row">РУКИ ДО ЛОКТЯ <span>1300.-</span></div>
+            <div class="block_1__row">РУКИ ПОЛНОСТЬЮ <span>1600.-</span></div>
+            <div class="block_1__row">НОГИ ДО КОЛЕНА <span>1300.-</span></div>
+            <div class="block_1__row">НОГИ ВЫШЕ КОЛЕНА <span>1700.-</span></div>
+          </div>
+          <div class="block_1__services block_1__services-5">
+            <div class="block_1__title">ВИЗАЖ</div>
+            <div class="block_1__row">КОРРЕКЦИЯ БРОВЕЙ <span>1000.-</span></div>
+            <div class="block_1__row">ОКРАС БРОВЕЙ <span>900.-</span></div>
+            <div class="block_1__row">ОКРАС РЕСНИЦ <span>900.-</span></div>
+            <div class="block_1__row">КОРРЕКЦИЯ И ОКРАС БРОВЕЙ <span>1700.-</span></div>
+          </div>
+          <div class="block_1__services block_1__services-5">
+            <div class="block_1__title">МАССАЖ (30 МИНУТ)</div>
+            <div class="block_1__row">МАССАЖ "ЛЕГКОСТЬ НОГ" <span>2500.-</span></div>
+            <div class="block_1__row">МАССАЖ НОГ КЛАССИЧЕСКИЙ <span>2000.-</span></div>
+            <div class="block_1__row">МАССАЖ РУК КЛАССИЧЕСКИЙ <span>1500.-</span></div>
+            <div class="block_1__row">МАССАЖ ГОРЯЧИМИ РАКОВИНАМИ АФРОДИТЫ <span>2500.-</span></div>
+          </div>
+        </div>
+        <div class="block_5__wrp">
+          <div class="block_1__services block_1__services-5">
+            <div class="block_1__title">КОЛЛЕКЦИЯ МАНИКЮР-УХОДОВ С ПОКРЫТИЕМ ЛАКА</div>
+            <div class="block_1__semi_title">МАНИКЮР "БАЗОВЫЙ УХОД"</div>
+            <div class="block_1__row">LA RIC "БИЗНЕС" <span>2600.-</span></div>
+            <div class="block_1__row">CHRISTINA FITZGHERALD "БЕЗВОДНЫЙ" <span>2600.-</span></div>
+            <div class="block_1__row">LA RIC "МУЖСКОЙ" <span>2600.-</span></div>
+            <div class="block_1__row">ДЕТСКИЙ МАНИКЮР (ДО 7 ЛЕТ) <span>1100.-</span></div>
+            <div class="block_1__semi_title">МАНИКЮР "ИНТЕНСИВНЫЙ УХОД"</div>
+            <div class="block_1__row">ST.BARTH "КАРИБСКИЙ" <span>3500.-</span></div>
+            <div class="block_1__row">LA RIC " ЗОЛОТОЕ СИЯНИЕ" <span>3500.-</span></div>
+            <div class="block_1__row">ELEMIS "УВЛАЖНЕНИЕ" <span>3500.-</span></div>
+          </div>
+          <div class="block_1__services block_1__services-5">
+            <div class="block_1__title">КОЛЛЕКЦИЯ ПЕДИКЮР-УХОДОВ С ПОКРЫТИЕМ ЛАКА</div>
+            <div class="block_1__semi_title">ПЕДИКЮР "БАЗОВЫЙ УХОД"</div>
+            <div class="block_1__row">CHRISTINA FITZGHERALD "БЕЗВОДНЫЙ" <span>3500.-</span></div>
+            <div class="block_1__row">ДЕТСКИЙ ПЕДИКЮР (ДО 7 ЛЕТ) <span>1500.-</span></div>
+            <div class="block_1__row">LA RIC "МУЖСКОЙ" <span>3500.-</span></div>
+            <div class="block_1__row">LA RIC "БИЗНЕС" <span>3500.-</span></div>
+            <div class="block_1__semi_title">ПЕДИКЮР "ИНТЕНСИВНЫЙ УХОД"</div>
+            <div class="block_1__row">ST.BARTH "КАРИБСКИЙ" <span>4500.-</span></div>
+            <div class="block_1__row">LA RIC " ЗОЛОТОЕ СИЯНИЕ" <span>4500.-</span></div>
+            <div class="block_1__row">ELEMIS "УВЛАЖНЕНИЕ" <span>4500.-</span></div>
+          </div>
+          <div class="block_1__services block_1__services-5">
+            <div class="block_1__title">ПОКРЫТИЯ</div>
+            <div class="block_1__row">ЛЕЧЕБНОЕ ПОКРЫТИЕ IBX <span>1150.-</span></div>
+            <div class="block_1__row">ФРЕНЧ ЛУННЫЙ <span>800.-</span></div>
+            <div class="block_1__row">СНЯТИЕ SHELLAC <span>500.-</span></div>
+            <div class="block_1__row">ФРЕНЧ ПОКРЫТИЕ <span>600.-</span></div>
+            <div class="block_1__row">ДИЗАЙН ОДНОГО НОГТЯ <span>100.-</span></div>
+            <div class="block_1__row">РЕМОНТ И УКРЕПЛЕНИЕ 1-ОГ НОГТЯ <span>200.-</span></div>
+            <div class="block_1__row">ПОКРЫТИЕ LUXIO <span>1800.-</span></div>
+            <div class="block_1__row">СНЯТИЕ+ДАЛЬНЕЙШЕЕ ПОКРЫТИЕ SHELLAC <span>2300.-</span></div>
+          </div>
+          <div class="block_1__services block_1__services-5">
+            <div class="block_1__title">ВИЗАЖ</div>
+            <div class="block_1__row">КОРРЕКЦИЯ БРОВЕЙ <span>1000.-</span></div>
+            <div class="block_1__row">КОРРЕКЦИЯ И ОКРАС БРОВЕЙ <span>1700.-</span></div>
+            <div class="block_1__row">ДНЕВНОЙ МАКИЯЖ <span>2500.-</span></div>
+            <div class="block_1__row">ВИЗАЖ ОТДЕЛЬНЫХ ЗОН <span>500.-</span></div>
+            <div class="block_1__row">ОКРАС БРОВЕЙ <span>900.-</span></div>
+            <div class="block_1__row">ОКРАС РЕСНИЦ <span>900.-</span></div>
+            <div class="block_1__row">ВЕЧЕРНИЙ МАКИЯЖ <span>5500.-</span></div>
+          </div>
+          <div class="block_1__services block_1__services-5">
+            <div class="block_1__title">ДЕПИЛЯЦИЯ</div>
+            <div class="block_1__row">НОГИ ДО КОЛЕНА <span>1300.-</span></div>
+            <div class="block_1__row">НОГИ ВЫШЕ КОЛЕНА <span>1700.-</span></div>
+            <div class="block_1__row">НОГИ ПОЛНОСТЬЮ <span>2800.-</span></div>
+            <div class="block_1__row">РУКИ ДО ЛОКТЯ <span>1300.-</span></div>
+            <div class="block_1__row">РУКИ ПОЛНОСТЬЮ <span>1600.-</span></div>
+          </div>
+          <div class="block_1__services block_1__services-5">
+            <div class="block_1__title">МАССАЖ (30 МИНУТ)</div>
+            <div class="block_1__row">РУКИ <span>1500.-</span></div>
+            <div class="block_1__row">НОГИ <span>2000.-</span></div>
+          </div>
+          <div class="block_1__services block_1__services-5">
+            <div class="block_1__title">РЕШЕНИЯ ДЛЯ ВОЛОС</div>
+            <div class="block_1__semi_title">УКЛАДКИ</div>
+            <div class="block_1__row">BUSINESS (50 МИНУТ) <span>2000.-</span></div>
+            <div class="block_1__row">EASY (35 МИНУТ) <span>1500.-</span></div>
+            <div class="block_1__row">BUSINESS LONG (60 МИНУТ) <span>2900.-</span></div>
+            <div class="block_1__row">LIFE STYLE LIGHT (С НАРОЩЕННЫМИ) <span>3500.-</span></div>
+            <div class="block_1__row">LIFE STYLE (90 МИНУТ) <span>4500.-</span></div>
+            <div class="block_1__semi_title">СТРИЖКИ</div>
+            <div class="block_1__row">LIGHT (15 МИНУТ) <span>1500.-</span></div>
+            <div class="block_1__row">EASY (40 МИНУТ) <span>2000.-</span></div>
+            <div class="block_1__row">BUSINESS (60 МИНУТ) <span>3500.-</span></div>
+            <div class="block_1__row">SPECIAL STYLE (90 МИНУТ) <span>4500.-</span></div>
+            <div class="block_1__row">EASY MAN <span>2000.-</span></div>
+            <div class="block_1__row">BUSINESS MAN <span>3000.-</span></div>
+            <div class="block_1__semi_title">УХОДЫ ROLLAND</div>
+            <div class="block_1__row">ДЛЯ ГЛАДКОСТИ ВОЛОС <span>1500.-</span></div>
+            <div class="block_1__row">ПРОТИВ СУХОЙ И ЖИРНОЙ ПЕРХОТИ <span>3800.-</span></div>
+            <div class="block_1__row">СПЕЦИАЛЬНЫЙ УХОД ЗА СВЕТЛЫМИ ВОЛОСАМИ <span>1800.-</span></div>
+            <div class="block_1__row">ВОССТАНОВЛЕНИЕ ЦВЕТА <span>1800.-</span></div>
+            <div class="block_1__row">ЛУБОКОЕ УВЛАЖНЕНИЕ ДЛЯ СУХИХ И СЕКУЩИХСЯ ВОЛОС <span>2800.-</span></div>
+            <div class="block_1__row">ПРОТИВ ВЫПАДЕНИЯ ВОЛОС <span>2800.-</span></div>
+          </div>
+        </div> {% endcomment %}
+      </div>
+    </section>
 
-    {% comment %}<!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com-->
-    <script type="text/javascript" src="https://a.optmnstr.com/app/js/api.min.js" data-account="51874" data-user="45798" async></script>
-    <!-- / OptinMonster -->{% endcomment %}
+    <section class="block_6 animation animation_bot">
+      <h2 class="block_6__h2">Бренды, с которыми мы работаем</h2>
+      <div class="block_6__slider">
+        <div class="block_6__slide">
+          <img class="lazyload" src="#" data-src="/static/img/block_6__slide-1.png" alt="">
+        </div>
+        <div class="block_6__slide">
+          <img class="lazyload" src="#" data-src="/static/img/block_6__slide-2.png" alt="">
+        </div>
+        <div class="block_6__slide">
+          <img class="lazyload" src="#" data-src="/static/img/block_6__slide-3.png" alt="">
+        </div>
+        <div class="block_6__slide">
+          <img class="lazyload" src="#" data-src="/static/img/block_6__slide-4.png" alt="">
+        </div>
+        <div class="block_6__slide">
+          <img class="lazyload" src="#" data-src="/static/img/block_6__slide-5.png" alt="">
+        </div>
+        <div class="block_6__slide">
+          <img class="lazyload" src="#" data-src="/static/img/block_6__slide-6.png" alt="">
+        </div>
+        <div class="block_6__slide">
+          <img class="lazyload" src="#" data-src="/static/img/block_6__slide-7.png" alt="">
+        </div>
+        <div class="block_6__slide">
+          <img class="lazyload" src="#" data-src="/static/img/block_6__slide-8.png" alt="">
+        </div>
+        <div class="block_6__slide">
+          <img class="lazyload" src="#" data-src="/static/img/block_6__slide-9.png" alt="">
+        </div>
+        <div class="block_6__slide">
+          <img class="lazyload" src="#" data-src="/static/img/block_6__slide-10.png" alt="">
+        </div>
+        <div class="block_6__slide">
+          <img class="lazyload" src="#" data-src="/static/img/block_6__slide-11.png" alt="">
+        </div>
+        <div class="block_6__slide">
+          <img class="lazyload" src="#" data-src="/static/img/block_6__slide-12.png" alt="">
+        </div>
+      </div>
+    </section>
 
-    <script>
-      (function(){ var widget_id = 'aGjpmjWGfG';var d=document;var w=window;function l(){var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
-    </script>
+    <section id="salons" class="block_8">
+      <h2  class="block_8__h2">Наши салоны</h2>
+      <div class="block_8__wrp">
+        <article data-call-salon-1 data-salon="72fe83ad-42f5-11e4-812c-18cf5e1770e2" class="block_8__block widget_reservi_loader widget animation animation_bot">
+          <div class="block_8__img">
+            <div class="block_8__img_el lazyload" data-bg="/static/img/block_8__block-1.jpg"></div>
+          </div>
+          <h3 class="block_8__h3">KYNSI на Патриарших</h3>
+          <div class="block_8__wp">
+            <div class="block_8__row block_8__row-line">Спиридоньевский пер. 5 стр. 2</div>
+            <div class="block_8__row">Без выходных, с 9:00 до 22:00</div>
+            <div class="block_8__row">Телефон для записи: <a class="mgo-number-11426" href="tel:+74951200303">+7 (495) 120-03-03</a></div>
+          </div>
+          <div class="block_8__button">Записаться в салон</div>
+        </article>
+        <article data-call-salon-2 data-salon="388236cd-fddf-11e6-b3ff-d05349e841da" class="block_8__block widget_reservi_loader widget animation animation_bot">
+          <div class="block_8__img">
+            <div class="block_8__img_el lazyload" data-bg="/static/img/block_8__block-2.jpg"></div>
+          </div>
+          <h3 class="block_8__h3">KYNSI на Петровке</h3>
+          <div class="block_8__wp">
+            <div class="block_8__row block_8__row-line">Петровка 20/1</div>
+            <div class="block_8__row">Без выходных, с 10:00 до 22:00</div>
+            <div class="block_8__row">Телефон для записи: <a class="mgo-number-11408" href="tel:+74951202303">+7 (495) 120-23-03</a></div>
+          </div>
+          <div class="block_8__button">Записаться в салон</div>
+        </article>
+        <article data-call-salon-3 data-salon="9fd686ea-9a48-11e4-8264-40f02f23b9a2" class="block_8__block widget_reservi_loader widget animation animation_bot">
+          <div class="block_8__img">
+            <div class="block_8__img_el lazyload" data-bg="/static/img/block_8__block-3.jpg"></div>
+          </div><h3 class="block_8__h3">KYNSI в Москва Сити</h3>
+          <div class="block_8__wp">
+            <div class="block_8__row block_8__row-line">Пресненская наб., 8, cтр. 1</div>
+            <div class="block_8__row">Без выходных, с 10:00 до 22:00</div>
+            <div class="block_8__row">Телефон для записи: <a class="mgo-number-11427" href="tel:+74951500540">+7 (495) 150-05-40</a></div>
+          </div>
+          <div class="block_8__button">Записаться в салон</div>
+        </article>
+      </div>
+      {% comment %} <div data-call-salon-org class="button button-block_1 button-block_8 widget reservi_button_emulation">Записаться онлайн</div> {% endcomment %}
+    </section>
 
-    <script>
-      (function(w, d, u, i, o, s, p) {
-          if (d.getElementById(i)) { return; } w['MangoObject'] = o; 
-          w[o] = w[o] || function() { (w[o].q = w[o].q || []).push(arguments) }; w[o].u = u; w[o].t = 1 * new Date();
-          s = d.createElement('script'); s.async = 1; s.id = i; s.src = u;
-          p = d.getElementsByTagName('script')[0]; p.parentNode.insertBefore(s, p);
-      }(window, document, '//widgets.mango-office.ru/widgets/mango.js', 'mango-js', 'mgo'));
-      mgo({calltracking: {id: 11427, elements: [{"selector":".mgo-number-11427"}]}});
-    </script>
+    <div class="block_3 animation animation_bot">
+      <div class="block_3__slider">
+        <article class="block_3__slide">
+          <div class="block_3__image lazyload" data-bg="/static/img/reviews-1.jpg"></div>
+          <div class="block_3__content">
+            <h2 class="block_3__h2">Валерия Артеменко</h2>
+            <div class="block_3__text">С Кинси у меня случилась любовь с первого взгляда. Это не просто салон куда я прихожу привести себя в порядок. Прибегая между репетициями я расслабляюсь и погружаюсь в замечательную атмосферу комфорта и спокойствия. Но главное достоинство Кинси- это потрясающие мастера, которые исполнят любой ваш каприз)</div>
+          </div>
+        </article>
+        <article class="block_3__slide">
+          <div class="block_3__image lazyload" data-bg="/static/img/reviews-2.jpg"></div>
+          <div class="block_3__content">
+            <h2 class="block_3__h2">Александра Войтенкова</h2>
+            <div class="block_3__text">Kynsi-любимое место. Аккуратные и высококвалифицированные мастера своего дела, приятные цены и атмосфера - что жителям мегаполиса, ох, как важно) Выше всяких похвал!</div>
+          </div>
+        </article>
+        <article class="block_3__slide">
+          <div class="block_3__image lazyload" data-bg="/static/img/reviews-3.jpg"></div>
+          <div class="block_3__content">
+            <h2 class="block_3__h2">Мария Виноградова</h2>
+            <div class="block_3__text">Для меня Kynsi - это пожалуй единственный салон в Москве, где можно действительно расслабиться. Тут все на высшем уровне : персонал, обслуживание, уход и прекрасный интерьер. Каждый раз после посещения Kynsi, мои маникюр и педикюр всегда в идеальном состоянии и служат мне очень долго. Похожих салонов в Москве я пока еще не встречала.</div>
+          </div>
+        </article>
+        <article class="block_3__slide">
+          <div class="block_3__image lazyload" data-bg="/static/img/reviews-4.jpg"></div>
+          <div class="block_3__content">
+            <h2 class="block_3__h2">Веро Холмова</h2>
+            <div class="block_3__text">Давно заметила за собой некий снобизм что касается интерьеров, будь то ресторан, квартира, кинотеатр. Kynsi, в этом плане меня приятно поразил: локанично, минималистично, а что главное для дома красоты-функционально. Сочетание белого цвета, дерева, живых стен и запаха лаванды от расслабляющего воротничка, который тебе заботливо кладут на хрупкие, уставшие плечи - незабываемо. Здесь работают настоящие профессионалы, всегда оценка 5+.</div>
+          </div>
+        </article>
+        <article class="block_3__slide">
+          <div class="block_3__image lazyload" data-bg="/static/img/reviews-5.jpg"></div>
+          <div class="block_3__content">
+            <h2 class="block_3__h2">Мария Лихтенфельд</h2>
+            <div class="block_3__text">С появлением нового KYNSI можно забыть о всех ярлыках "салонов красоты" и "маникюрных студий". Это футуристичное, многофункциональное пространство, в котором пропадаешь, отрываясь от суеты реальности. При этом - отличный ногтевой сервис, любимая подборка фильмов и постоянное предвкушение новых сюрпризов.</div>
+          </div>
+        </article>
+        <article class="block_3__slide">
+          <div class="block_3__image lazyload" data-bg="/static/img/reviews-6.jpg"></div>
+          <div class="block_3__content">
+            <h2 class="block_3__h2">Артём Королев</h2>
+            <div class="block_3__text">Я не уделяю столько времени и внимания своему маникюру, как девушки, но ногти всегда держу в хорошем состоянии. В Kynsi все происходит быстро и приятно. Плюс там работают самые красивые девушки Москвы :) Так что мне очень нравится!</div>
+          </div>
+        </article>
+        <article class="block_3__slide">
+          <div class="block_3__image lazyload" data-bg="/static/img/reviews-7.jpg"></div>
+          <div class="block_3__content">
+            <h2 class="block_3__h2">Вячеслав Глушков</h2>
+            <div class="block_3__text">Я про Kynsi слышу регулярно и достаточно давно от своих вечно взволнованных состоянием маникюра подруг. А недавно на смену моим скитаниям по разным салонам пришел новый Kynsi прямо рядом с домом. Благо сервис на правильном уровне, думать и решать особо не пришлось. И да, когда-нибудь я-таки попробую маникюр "по локоть" под названием, кажется, Кристина</div>
+          </div>
+        </article>
+      </div>
+    </div>
 
-    <script>
-      (function(w, d, u, i, o, s, p) {
-          if (d.getElementById(i)) { return; } w['MangoObject'] = o; 
-          w[o] = w[o] || function() { (w[o].q = w[o].q || []).push(arguments) }; w[o].u = u; w[o].t = 1 * new Date();
-          s = d.createElement('script'); s.async = 1; s.id = i; s.src = u;
-          p = d.getElementsByTagName('script')[0]; p.parentNode.insertBefore(s, p);
-      }(window, document, '//widgets.mango-office.ru/widgets/mango.js', 'mango-js', 'mgo'));
-      mgo({calltracking: {id: 11426, elements: [{"selector":".mgo-number-11426"}]}});
-    </script>
+    <div class="block_9">
+      <div class="block_9__slider animation animation_bot">
+        <a href="https://www.instagram.com/p/BpM7dqQHUmz/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-1.jpg"></a>
+        <a href="https://www.instagram.com/p/BsdpbuLHx2H/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-9.jpg"></a>
+        <a href="https://www.instagram.com/p/Br5Z6jTnbv-/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-10.jpg"></a>
+      </div>
+      <div class="block_9__slider animation animation_bot">
+        <a href="https://www.instagram.com/p/Behi9-vB28R/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-2.jpg"></a>
+        <a href="https://www.instagram.com/p/Br0nKd5HEV7/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-11.jpg"></a>
+        <a href="https://www.instagram.com/p/BruH1vxnEdJ/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-12.jpg"></a>
+      </div>
+      <div class="block_9__slider animation animation_bot">
+        <a href="https://www.instagram.com/p/BeXuOZQFioZ/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-3.jpg"></a>
+        <a href="https://www.instagram.com/p/BrmWPc4Hz0t/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-13.jpg"></a>
+        <a href="https://www.instagram.com/p/BqrLQwwH5vV/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-14.jpg"></a>
+      </div>
+      <div class="block_9__slider animation animation_bot">
+        <a href="https://www.instagram.com/p/Bp6thdXHl7L/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-4.jpg"></a>
+        <a href="https://www.instagram.com/p/BphzahZnNts/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-15.jpg"></a>
+        <a href="https://www.instagram.com/p/Bn0ze-BhuYw/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-16.jpg"></a>
+      </div>
+      <div class="block_9__slider animation animation_bot">
+        <a href="https://www.instagram.com/p/BdzUZJFl3Qr/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-5.jpg"></a>
+        <a href="https://www.instagram.com/p/BnTJZBMBAzz/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-17.jpg"></a>
+        <a href="https://www.instagram.com/p/Bl-Nh3Lh5hW/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-18.jpg"></a>
+      </div>
+      <div class="block_9__slider animation animation_bot">
+        <a href="https://www.instagram.com/p/BbuS7PFldQa/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-6.jpg"></a>
+        <a href="https://www.instagram.com/p/Bhl0uQkBjH9/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-19.jpg"></a>
+        <a href="https://www.instagram.com/p/BgV6BVvHN7E/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-20.jpg"></a>
+      </div>
+      <div class="block_9__slider animation animation_bot">
+        <a href="https://www.instagram.com/p/Ba6o8GIlT8-/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-7.jpg"></a>
+        <a href="https://www.instagram.com/p/BeAQrPdl1ab/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-21.jpg"></a>
+        <a href="https://www.instagram.com/p/Bdw5Ez5FqSW/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-22.jpg"></a>
+      </div>
+      <div class="block_9__slider animation animation_bot">
+        <a href="https://www.instagram.com/p/BcZQaB9ltB-/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-8.jpg"></a>
+        <a href="https://www.instagram.com/p/BczPTXUFABI/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-23.jpg"></a>
+        <a href="https://www.instagram.com/p/BcmcCZ8FeKh/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-24.jpg"></a>
+      </div>
+    </div>
 
-    <script>
-      (function(w, d, u, i, o, s, p) {
-          if (d.getElementById(i)) { return; } w['MangoObject'] = o; 
-          w[o] = w[o] || function() { (w[o].q = w[o].q || []).push(arguments) }; w[o].u = u; w[o].t = 1 * new Date();
-          s = d.createElement('script'); s.async = 1; s.id = i; s.src = u;
-          p = d.getElementsByTagName('script')[0]; p.parentNode.insertBefore(s, p);
-      }(window, document, '//widgets.mango-office.ru/widgets/mango.js', 'mango-js', 'mgo'));
-      mgo({calltracking: {id: 11408, elements: [{"selector":".mgo-number-11408"}]}});
-    </script>
+    <div class="map animation animation_bot">
+      <iframe class="lazyload" title="yandexMap" data-src="https://yandex.ru/map-widget/v1/?um=constructor%3Ac2cc93efc49dcd1f934e880248f1c3531200eb3a94cc165c483d659df6bb1630&amp;source=constructor"></iframe>
+    </div>
 
-    {% comment %}<script type="text/javascript">!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://vk.com/js/api/openapi.js?160",t.onload=function(){VK.Retargeting.Init("VK-RTRG-246364-53nuo"),VK.Retargeting.Hit()},document.head.appendChild(t)}();</script><noscript><img class="lazyload" src="https://vk.com/rtrg?p=VK-RTRG-246364-53nuo" style="position:fixed; left:-999px;" alt=""/></noscript>{% endcomment %}
+  </div>
 
-    <!-- Facebook Pixel Code -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '247362045788595');
-      fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=247362045788595&ev=PageView&noscript=1" alt=""
-    /></noscript>
-    <!-- End Facebook Pixel Code -->
-
-    <!-- Yandex.Metrika counter -->
-    <script>
-        (function (d, w, c) {
-            (w[c] = w[c] || []).push(function() {
-                try {
-                    w.yaCounter18944653 = new Ya.Metrika2({
-                        id:18944653,
-                        clickmap:true,
-                        trackLinks:true,
-                        accurateTrackBounce:true,
-                        webvisor:true,
-                        trackHash:true
-                    });
-                } catch(e) { }
-            });
-
-            var n = d.getElementsByTagName("script")[0],
-                s = d.createElement("script"),
-                f = function () { n.parentNode.insertBefore(s, n); };
-            s.type = "text/javascript";
-            s.async = true;
-            s.src = "https://mc.yandex.ru/metrika/tag.js";
-
-            if (w.opera == "[object Opera]") {
-                d.addEventListener("DOMContentLoaded", f, false);
-            } else { f(); }
-        })(document, window, "yandex_metrika_callbacks2");
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/18944653" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108073014-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-108073014-1');
-    </script>
-
-  </body>
-</html>
+{% endblock %}
