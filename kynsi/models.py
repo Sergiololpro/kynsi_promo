@@ -39,7 +39,7 @@ class Site(models.Model):
         help_text="work@kynsi.ru"
     )
 
-    q_email = models.CharField(
+    pr_email = models.CharField(
         max_length=256, null=False, blank=True, default="", verbose_name="Почта: 'Связь для прессы'",
         help_text="pr@kynsi.ru"
     )
