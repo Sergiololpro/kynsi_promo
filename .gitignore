@@ -58,3 +58,6 @@ target/
 
 .venv
 settings_lcoal.py
+
+media
+*.pyc

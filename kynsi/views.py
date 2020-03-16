@@ -35,7 +35,8 @@ class SiteGenericView(FormView):
 
     def get_context_data(self, **kwargs):
         context = {
-            'site_settings': Site.objects.first()
+            'site_settings': Site.objects.first(),
+            'salons': Salons.objects.all()
         }
             
         return context

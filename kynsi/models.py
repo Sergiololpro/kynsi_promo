@@ -2,7 +2,7 @@ from django.db import models
 
 class Site(models.Model):
     """
-    Модель основных настроек сайта.
+    Модель основных настроек сайта
     """
     seo_title = models.CharField(
         max_length=128, null=False, blank=True, default="", verbose_name="Seo title",
@@ -47,5 +47,53 @@ class Site(models.Model):
     class Meta:
         verbose_name = "Основные настрйки сайта"
         verbose_name_plural = "Основные настрйки сайта"
+
+class Salons(models.Model):
+    """
+    Модель салонов
+    """
+    title = models.CharField(
+        max_length=128, null=False, blank=True, default="", verbose_name="Название салона",
+        help_text="KYNSI на Петровке"
+    )
+
+    address = models.CharField(
+        max_length=128, null=False, blank=True, default="", verbose_name="Адрес",
+        help_text="Петровка 20/1"
+    )
+
+    time = models.CharField(
+        max_length=128, null=False, blank=True, default="", verbose_name="Часы работы",
+        help_text="Без выходных, с 10:00 до 22:00"
+    )
+
+    phone = models.CharField(
+        max_length=64, null=False, blank=True, default="", verbose_name="Телефон",
+        help_text="+7 (495) 477-65-06"
+    )
+
+    image = models.ImageField(
+        upload_to='site_images', null=True, blank=True,
+        verbose_name="Картинка салона"
+    )
+
+    mango = models.CharField(
+        max_length=32, null=False, blank=True, default="", verbose_name="Id салона для mango",
+        help_text="11408"
+    )
+
+    reservi_id = models.CharField(
+        max_length=32, null=False, blank=True, default="", verbose_name="Id салона для онлайн записи",
+        help_text="2"
+    )
+
+    reservi_salon = models.CharField(
+        max_length=128, null=False, blank=True, default="", verbose_name="Код салона для онлайн записи",
+        help_text="388236cd-fddf-11e6-b3ff-d05349e841da"
+    )
+
+    class Meta:
+        verbose_name = "Салон"
+        verbose_name_plural = "Салоны"
 
  

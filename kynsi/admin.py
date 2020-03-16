@@ -38,3 +38,38 @@ class SiteSettings(admin.ModelAdmin):
         ),
     ]
 
+@admin.register(Salons)
+class Salons(admin.ModelAdmin):
+    model = Site
+    extra = 0
+
+    list_display = ('id', 'title')
+
+    fieldsets = [
+        (
+            'Основные', {
+                'fields': [
+                    'title',
+                    'address',
+                    'time',
+                    'phone',
+                    'image',
+                ]
+            },  
+        ),
+        (
+            'Mango', {
+                'fields': [
+                    'mango',
+                ]
+            },
+        ),
+        (
+            'Онлайн запись', {
+                'fields': [
+                    'reservi_id',
+                    'reservi_salon',
+                ]
+            },
+        ),
+    ]
