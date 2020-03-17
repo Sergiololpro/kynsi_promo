@@ -46,10 +46,21 @@ class MainView(SiteGenericView):
     Главная страница
     """
     template_name = "index.html"
+    
 
     def get(self, request, *args, **kwargs):
 
         context = self.get_context_data(**kwargs)
+
+        categories = Categories.objects.all()
+
+        context['categories'] = categories
+
+        print(categories)
+
+        for category in categories:
+            subCategory = SubCategories.objects.filter(category=category)
+            print(subCategory)
 
         return self.render_to_response(context)
 

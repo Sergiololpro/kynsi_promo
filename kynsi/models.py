@@ -120,6 +120,11 @@ class Categories(models.Model):
         verbose_name = "Услуги - категории"
         verbose_name_plural = "Услуги - категории"
 
+    def __str__(self):                           
+        full_path = [self.title]                  
+        k = self.parent
+        return ' -> '.join(full_path[::-1])
+
 class SubCategories(models.Model):
     """
     Модель подкатегорий

@@ -20,7 +20,12 @@
     </div>
 
   <div class="wrapper">
-
+    {% for category in categories %}
+      {{ category }}
+      {% for product in category.get_products %}
+            <p> {{product}} </p>
+        {% endfor %}
+    {% endfor %}
     <section id="certs" class="certs">
       <h2 class="reg__h2 reg__h2-certs">KYNSI в подарок</h2>
       <div class="certs__big">В каком формате Вы  хотели бы приобрести подарок в KYNSI?</div>
