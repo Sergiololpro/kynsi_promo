@@ -50,6 +50,7 @@ class Salons(admin.ModelAdmin):
             'Основные', {
                 'fields': [
                     'title',
+                    'short_title',
                     'address',
                     'time',
                     'phone',

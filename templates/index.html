@@ -535,49 +535,7 @@
       </div>
     </section>
 
-    <section id="salons" class="block_8">
-      <h2 class="block_8__h2">Наши салоны</h2>
-      <div class="block_8__wrp">
-        {% for salon in salons %}
-          <article data-call-salon-{{ salon.reservi_id }} data-salon="{{ salon.reservi_salon }}" class="block_8__block widget_reservi_loader widget animation animation_bot">
-            <div class="block_8__img">
-              <div class="block_8__img_el lazyload" data-bg="{{ salon.image.url }}"></div>
-            </div>
-            <h3 class="block_8__h3">KYNSI на Патриарших</h3>
-            <div class="block_8__wp">
-              <div class="block_8__row block_8__row-line">Спиридоньевский пер. 5 стр. 2</div>
-              <div class="block_8__row">Без выходных, с 9:00 до 22:00</div>
-              <div class="block_8__row">Телефон для записи: <a class="mgo-number-11426" href="tel:+74951200303">+7 (495) 120-03-03</a></div>
-            </div>
-            <div class="block_8__button">Записаться в салон</div>
-          </article>
-        {% endfor %}
-        <article data-call-salon-2 data-salon="388236cd-fddf-11e6-b3ff-d05349e841da" class="block_8__block widget_reservi_loader widget animation animation_bot">
-          <div class="block_8__img">
-            <div class="block_8__img_el lazyload" data-bg="/static/img/block_8__block-2.jpg"></div>
-          </div>
-          <h3 class="block_8__h3">KYNSI на Петровке</h3>
-          <div class="block_8__wp">
-            <div class="block_8__row block_8__row-line">Петровка 20/1</div>
-            <div class="block_8__row">Без выходных, с 10:00 до 22:00</div>
-            <div class="block_8__row">Телефон для записи: <a class="mgo-number-11408" href="tel:+74951202303">+7 (495) 120-23-03</a></div>
-          </div>
-          <div class="block_8__button">Записаться в салон</div>
-        </article>
-        <article data-call-salon-3 data-salon="9fd686ea-9a48-11e4-8264-40f02f23b9a2" class="block_8__block widget_reservi_loader widget animation animation_bot">
-          <div class="block_8__img">
-            <div class="block_8__img_el lazyload" data-bg="/static/img/block_8__block-3.jpg"></div>
-          </div><h3 class="block_8__h3">KYNSI в Москва Сити</h3>
-          <div class="block_8__wp">
-            <div class="block_8__row block_8__row-line">Пресненская наб., 8, cтр. 1</div>
-            <div class="block_8__row">Без выходных, с 10:00 до 22:00</div>
-            <div class="block_8__row">Телефон для записи: <a class="mgo-number-11427" href="tel:+74951500540">+7 (495) 150-05-40</a></div>
-          </div>
-          <div class="block_8__button">Записаться в салон</div>
-        </article>
-      </div>
-      {% comment %} <div data-call-salon-org class="button button-block_1 button-block_8 widget reservi_button_emulation">Записаться онлайн</div> {% endcomment %}
-    </section>
+    {% include "includes/salons.html" %}
 
     <div class="block_3 animation animation_bot">
       <div class="block_3__slider">

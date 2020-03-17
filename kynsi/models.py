@@ -57,6 +57,11 @@ class Salons(models.Model):
         help_text="KYNSI на Петровке"
     )
 
+    short_title = models.CharField(
+        max_length=64, null=False, blank=True, default="", verbose_name="Короткое название салона",
+        help_text="Петровка"
+    )
+
     address = models.CharField(
         max_length=128, null=False, blank=True, default="", verbose_name="Адрес",
         help_text="Петровка 20/1"

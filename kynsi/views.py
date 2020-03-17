@@ -43,9 +43,21 @@ class SiteGenericView(FormView):
 
 class MainView(SiteGenericView):
     """
-    Вьюха для главной
+    Главная страница
     """
     template_name = "index.html"
+
+    def get(self, request, *args, **kwargs):
+
+        context = self.get_context_data(**kwargs)
+
+        return self.render_to_response(context)
+
+class DressCodeView(SiteGenericView):
+    """
+    Страница дресскод
+    """
+    template_name = "dresscode.html"
 
     def get(self, request, *args, **kwargs):
 
