@@ -10,5 +10,5 @@ from . import views
 
 app_name = 'kynsi'
 urlpatterns = [
-    url("", views.MainView.as_view(), name="index"),
+    url(r'^$', views.MainView.as_view(), name="index"),
 ] + static(django_settings.MEDIA_URL, document_root=django_settings.MEDIA_ROOT)
