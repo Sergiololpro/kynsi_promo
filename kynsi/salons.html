@@ -1,0 +1,25 @@
+{% load static %}
+
+{% if salons %}
+    <section id="salons" class="block_8">
+        <h2 class="block_8__h2">Наши салоны</h2>
+        <div class="block_8__wrp">
+        {% for salon in salons %}
+            <article data-call-salon-{{ salon.reservi_id }} data-salon="{{ salon.reservi_salon }}" class="block_8__block widget_reservi_loader widget animation animation_bot">
+            <div class="block_8__img">
+                <div class="block_8__img_el lazyload" data-bg="{{ salon.image.url }}"></div>
+            </div>
+            <h3 class="block_8__h3">{{ salon.title }}</h3>
+            <div class="block_8__wp">
+                <div class="block_8__row block_8__row-line">{{ salon.address }}</div>
+                <div class="block_8__row">{{ salon.time }}</div>
+                {% if salon.phone %}
+                    <div class="block_8__row">Телефон для записи: <a class="mgo-number-{{ salon.mango }}" href="tel:{{ salon.phone }}">{{ salon.phone }}</a></div>
+                {% endif %}
+            </div>
+            <div class="block_8__button">Записаться в салон</div>
+            </article>
+        {% endfor %}
+        </div>
+    </section>
+{% endif %}

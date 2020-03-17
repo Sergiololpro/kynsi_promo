@@ -74,3 +74,42 @@ class Salons(admin.ModelAdmin):
             },
         ),
     ]
+
+@admin.register(Categories)
+class Categories(admin.ModelAdmin):
+    model = Site
+    extra = 0
+
+    list_display = ('id', 'title')
+
+    fieldsets = [
+        (
+            'Основные', {
+                'fields': [
+                    'title',
+                    'order',
+                    'is_show',
+                ]
+            },  
+        ),
+    ]
+
+@admin.register(SubCategories)
+class SubCategories(admin.ModelAdmin):
+    model = Site
+    extra = 0
+
+    list_display = ('id', 'title')
+
+    fieldsets = [
+        (
+            'Основные', {
+                'fields': [
+                    'title',
+                    'category',
+                    'order',
+                    'is_show',
+                ]
+            },  
+        ),
+    ]

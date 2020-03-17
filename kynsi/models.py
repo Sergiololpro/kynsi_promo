@@ -101,4 +101,44 @@ class Salons(models.Model):
         verbose_name = "Салон"
         verbose_name_plural = "Салоны"
 
+class Categories(models.Model):
+    """
+    Модель категорий
+    """
+    title = models.CharField(
+        max_length=128, null=False, blank=True, default="", verbose_name="Название категории",
+        help_text="Маникюры"
+    )
+
+    order = models.IntegerField(verbose_name="Порядок отображения категорию", default=100)
+
+    is_show = models.BooleanField(
+        verbose_name="Показывать категорию на сайте", default=True,
+    )
+
+    class Meta:
+        verbose_name = "Услуги - категории"
+        verbose_name_plural = "Услуги - категории"
+
+class SubCategories(models.Model):
+    """
+    Модель подкатегорий
+    """
+    title = models.CharField(
+        max_length=128, null=False, blank=True, default="", verbose_name="Название подкатегории",
+        help_text="Маникюры"
+    )
+
+    category = models.ForeignKey(Categories, verbose_name='Родительская категория', related_name='parent', on_delete=models.CASCADE)
+
+    order = models.IntegerField(verbose_name="Порядок отображения подкатегорию", default=100)
+
+    is_show = models.BooleanField(
+        verbose_name="Показывать подкатегорию на сайте", default=True,
+    )
+
+    class Meta:
+        verbose_name = "Услуги - подкатегории"
+        verbose_name_plural = "Услуги - подкатегории"
+
  
