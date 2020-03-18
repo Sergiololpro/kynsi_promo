@@ -1,0 +1,11 @@
+{% load static %}
+
+{% if reviewssliders %}
+    <div id="about" class="block_3">
+      <div class="block_3__slider animation animation_bot">
+        {% for elem in reviewssliders %}
+          {% include "includes/slide.html" %}
+        {% endfor %}
+      </div>
+    </div>
+{% endif %}

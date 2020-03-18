@@ -1,0 +1,14 @@
+{% load static %}
+
+{% if brands %}
+    <section class="block_6 animation animation_bot">
+        <h2 class="block_6__h2">Бренды, с которыми мы работаем</h2>
+        <div class="block_6__slider">
+            {% for brand in brands %}
+            <div class="block_6__slide">
+                <img class="lazyload" src="#" {% if brand.image %}data-src="{{ brand.image.url }}"{% endif %} alt="{{ brand.title }}">
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endif %}

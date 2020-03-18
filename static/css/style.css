@@ -593,10 +593,14 @@ body {
   color: #757684;
   font-weight: 500;
   line-height: 25px;
+
+}
+
+.block_3__text p {
   margin: 0 0 14px;
 }
 
-.block_3__text:last-child {
+.block_3__text p:last-child {
   margin: 0;
 }
 

@@ -1,0 +1,26 @@
+{% load static %}
+
+{% if categories %}
+    <section id="services" class="block_5">
+      <h2 class="block_5__h2 animation animation_left">Услуги</h2>
+      <div class="block_5__name animation animation_left">Услуги по уходу за волосами и лицом только в KYNSI на Патриарших прудах и в Москва-Сити</div>
+      <div>
+        <div class="block_5__wrp active">
+          {% for category in categories %}
+            <div class="block_1__services block_1__services-5 animation animation_bot">
+              <div class="block_5__img lazyload" {% if category.image %}data-bg="{{ category.image.url }}"{% endif %}></div>
+              <div class="block_1__title">{{ category.title }}</div>
+              <div class="block_5__hide">
+                {% for subcategory in category.get_subcategories %}
+                    <div class="block_1__semi_title">{{ subcategory.title }}</div>
+                      {% for service in subcategory.get_sevices %}
+                        <div class="block_1__row">{{ service.title }} <span>{{ service.price }}.-</span></div>
+                      {% endfor %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+{% endif %}

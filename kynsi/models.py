@@ -44,9 +44,15 @@ class Site(models.Model):
         help_text="pr@kynsi.ru"
     )
 
+    ya_map = models.TextField(
+        max_length=256, null=False, blank=True, default="", verbose_name="src из яндекс карт",
+        help_text="https://yandex.ru/map-widget/v1/?um=constructor%3Ac2cc93efc49dcd1f934e880248f1c3531200eb3a94cc165c483d659df6bb1630&amp;source=constructor"
+    )
+
     class Meta:
         verbose_name = "Основные настрйки сайта"
         verbose_name_plural = "Основные настрйки сайта"
+
 
 class Salons(models.Model):
     """
@@ -101,6 +107,7 @@ class Salons(models.Model):
         verbose_name = "Салон"
         verbose_name_plural = "Салоны"
 
+
 class Categories(models.Model):
     """
     Модель категорий
@@ -108,6 +115,11 @@ class Categories(models.Model):
     title = models.CharField(
         max_length=128, null=False, blank=True, default="", verbose_name="Название категории",
         help_text="Маникюры"
+    )
+
+    image = models.ImageField(
+        upload_to='site_images', null=True, blank=True,
+        verbose_name="Картинка услуги"
     )
 
     order = models.IntegerField(verbose_name="Порядок отображения категорию", default=100)
@@ -128,6 +140,7 @@ class Categories(models.Model):
     @property
     def get_subcategories(self):
          return SubCategories.objects.filter(category=self.id, is_show=True)
+
 
 class SubCategories(models.Model):
     """
@@ -159,6 +172,7 @@ class SubCategories(models.Model):
     def get_sevices(self):
          return Services.objects.filter(subcategory=self.id, is_show=True)
 
+
 class Services(models.Model):
     """
     Модель услуги
@@ -170,6 +184,11 @@ class Services(models.Model):
 
     subcategory = models.ForeignKey(SubCategories, verbose_name='Родительская подкатегория', related_name='parent', on_delete=models.CASCADE)
 
+    price = models.CharField(
+        max_length=8, null=False, blank=True, default="", verbose_name="Цена",
+        help_text="4000"
+    )
+
     order = models.IntegerField(verbose_name="Порядок отображения подкатегорию", default=100)
 
     is_show = models.BooleanField(
@@ -179,5 +198,106 @@ class Services(models.Model):
     class Meta:
         verbose_name = "Услуги"
         verbose_name_plural = "Услуги"
+
+
+class Brands(models.Model):
+    """
+    Модель брендов
+    """
+    title = models.CharField(
+        max_length=128, null=False, blank=True, default="", verbose_name="Название бренда",
+        help_text="Kure BAZAAR"
+    )
+
+    image = models.ImageField(
+        upload_to='site_images', null=True, blank=True,
+        verbose_name="Картинка бренда"
+    )
+
+    is_show = models.BooleanField(
+        verbose_name="Показывать бренд на сайте", default=True,
+    )
+
+    class Meta:
+        verbose_name = "Бренды"
+        verbose_name_plural = "Бренды"
+
+
+class SalonsSlider(models.Model):
+    """
+    Модель слайдера салонов
+    """
+    class Meta:
+        verbose_name = "Слайдер салонов"
+        verbose_name_plural = "Слайдер салонов"
+
+
+class SalonSliderImage(models.Model):
+    """
+    Модель картинок слайдера салонов
+    """
+    image = models.ImageField('Картинки', upload_to='site_images', null=True)
+    title = models.CharField(
+        max_length=128, null=False, blank=True, default="", verbose_name="Название картинки слайдера",
+        help_text="Kynsi Петровка"
+    )
+    salonslider = models.ForeignKey(SalonsSlider, verbose_name='Слайдер салона', related_name='images', on_delete=models.CASCADE)
+    ordering = models.IntegerField('Порядок', default=0)
+
+    def __str__(self):
+        return str(self.pk)
+
+    class Meta:
+        verbose_name = 'Картинка для сладйера салонов'
+        verbose_name_plural = 'Картинка для сладйера салонов'
+        ordering = ['ordering']
+
+
+class BlogSlider(models.Model):
+    """
+    Модель слайдера блогов
+    """
+    title = models.CharField(
+        max_length=256, null=False, blank=True, default="", verbose_name="Заголовок блога",
+    )
+
+    text = models.TextField('Текст блока', null=True, blank=True, help_text="Абзацы в &lt;p&gt;&lt;/p&gt;")
+
+    image = models.ImageField(
+        upload_to='site_images', null=True, blank=True,
+        verbose_name="Картинка блога"
+    )
+
+    is_show = models.BooleanField(
+        verbose_name="Показывать элемент на сайте", default=True,
+    )
+
+    class Meta:
+        verbose_name = "Слайдер блога"
+        verbose_name_plural = "Слайдер блога"
+
+
+class ReviewsSlider(models.Model):
+    """
+    Модель слайдера отзывов
+    """
+    title = models.CharField(
+        max_length=256, null=False, blank=True, default="", verbose_name="Заголовок отзыва",
+    )
+
+    text = models.TextField('Текст отзыва', null=True, blank=True, help_text="Абзацы в &lt;p&gt;&lt;/p&gt;")
+
+    image = models.ImageField(
+        upload_to='site_images', null=True, blank=True,
+        verbose_name="Картинка отзыва"
+    )
+
+    is_show = models.BooleanField(
+        verbose_name="Показывать элемент на сайте", default=True,
+    )
+
+    class Meta:
+        verbose_name = "Слайдер отзывов"
+        verbose_name_plural = "Слайдер отзывов"
 
  

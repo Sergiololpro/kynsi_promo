@@ -1,6 +1,19 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 from .models import *
 
+
+class SalonSliderImageInline(admin.TabularInline):
+    model = SalonSliderImage
+    extra = 3
+    readonly_fields = ["preview"]
+
+    def preview(self, obj):
+        return mark_safe('<img src="{url}" width="{width}" height={height} />'.format(
+            url=obj.image.url,
+            width=200,
+            height=150,
+        ))
 
 @admin.register(Site)
 class SiteSettings(admin.ModelAdmin):
@@ -33,6 +46,13 @@ class SiteSettings(admin.ModelAdmin):
                     'q_email',
                     'work_email',
                     'pr_email',
+                ]
+            },
+        ),
+        (
+            'Дополнительные', {
+                'fields': [
+                    'ya_map'
                 ]
             },
         ),
@@ -87,6 +107,7 @@ class Categories(admin.ModelAdmin):
             'Основные', {
                 'fields': [
                     'title',
+                    'image',
                     'order',
                     'is_show',
                 ]
@@ -127,7 +148,70 @@ class Services(admin.ModelAdmin):
                 'fields': [
                     'title',
                     'subcategory',
+                    'price',
                     'order',
+                    'is_show',
+                ]
+            },  
+        ),
+    ]
+
+@admin.register(Brands)
+class Brands(admin.ModelAdmin):
+    model = Site
+    extra = 0
+
+    list_display = ('id', 'title')
+
+    fieldsets = [
+        (
+            'Основные', {
+                'fields': [
+                    'title',
+                    'image'
+                ]
+            },  
+        ),
+    ]
+
+@admin.register(SalonsSlider)
+class SalonsSlider(admin.ModelAdmin):
+    inlines = [SalonSliderImageInline]
+
+@admin.register(BlogSlider)
+class BlogSlider(admin.ModelAdmin):
+    model = Site
+    extra = 0
+
+    list_display = ('id', 'title')
+
+    fieldsets = [
+        (
+            'Основные', {
+                'fields': [
+                    'title',
+                    'text',
+                    'image',
+                    'is_show',
+                ]
+            },  
+        ),
+    ]
+
+@admin.register(ReviewsSlider)
+class ReviewsSlider(admin.ModelAdmin):
+    model = Site
+    extra = 0
+
+    list_display = ('id', 'title')
+
+    fieldsets = [
+        (
+            'Основные', {
+                'fields': [
+                    'title',
+                    'text',
+                    'image',
                     'is_show',
                 ]
             },  

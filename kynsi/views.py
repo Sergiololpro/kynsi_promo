@@ -7,6 +7,7 @@ from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.conf import settings as django_settings
 from django.views.generic import FormView
+from django.core.mail import send_mail, BadHeaderError
 
 from .models import *
 
@@ -26,6 +27,7 @@ def default_context(request, alias, object):
 
     return context_object
 
+
 class SiteGenericView(FormView):
     """
     Общие настройки сайта
@@ -41,6 +43,7 @@ class SiteGenericView(FormView):
             
         return context
 
+
 class MainView(SiteGenericView):
     """
     Главная страница
@@ -52,11 +55,14 @@ class MainView(SiteGenericView):
 
         context = self.get_context_data(**kwargs)
 
-        categories = Categories.objects.all().filter(is_show=True)
-
-        context['categories'] = categories
+        context['categories'] = Categories.objects.all().filter(is_show=True)
+        context['brands'] = Brands.objects.all().filter(is_show=True)
+        context['salonsliders'] = SalonsSlider.objects.all().first()
+        context['blogliders'] = BlogSlider.objects.all().filter(is_show=True)
+        context['reviewssliders'] = ReviewsSlider.objects.all().filter(is_show=True)
 
         return self.render_to_response(context)
+
 
 class DressCodeView(SiteGenericView):
     """
@@ -69,4 +75,25 @@ class DressCodeView(SiteGenericView):
         context = self.get_context_data(**kwargs)
 
         return self.render_to_response(context)
+
+
+def sendmail(request):
+    if request.is_ajax():
+        name = request.POST.get('name','')
+        phone = request.POST.get('phone','')
+        nominal = request.POST.get('nominal','')
+        utm = request.POST.get('utm','')
+        
+        message_html = u'Заказ Сертификата с сайта kynsi.ru <br/>От ' + name + u' <br/>Телефон: ' + phone + '<br/>Номинал: ' + nominal + '<br/>Реклама: ' + utm + '.'
+        recipient_list = ['Yulia.d@kynsi.ru']
+
+        try:
+            send_mail(
+                u'Заказ сертификата на сайте kynsi.ru', message_html, 'kynsi-sert@yandex.ru', recipient_list,
+                html_message=message_html, fail_silently=False)
+        except (BadHeaderError, AttributeError):  # Защита от уязвимости
+            error = 'Invalid header found'
+        # Переходим на другую страницу, если сообщение отправлено
+
+    return HttpResponse('ok')
 

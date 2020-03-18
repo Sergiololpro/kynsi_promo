@@ -1,0 +1,9 @@
+{% load static %}
+
+ <article class="block_3__slide">
+  <div class="block_3__image lazyload" {% if elem.image %}data-bg="{{ elem.image.url }}"{% endif %}></div>
+  <div class="block_3__content">
+    <h2 class="block_3__h2">{{ elem.title }}</h2>
+    <div class="block_3__text">{{ elem.text|safe }}</div>
+  </div>
+</article>

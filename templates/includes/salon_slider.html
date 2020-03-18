@@ -1,0 +1,13 @@
+{% load static %}
+
+{% if salonsliders %}
+    <section class="salons_slider__wrp">
+      <div class="salons_slider animation animation_bot">
+        {% for image in salonsliders.images.all %}
+            <div class="salons_slide lazyload" {% if image.image %}data-bg="{{ image.image.url }}"{% endif %}></div>
+        {% endfor %}
+      </div>
+      <h2 class="salons_slider__h2 animation animation_bot">KYNSI – это три салона, расположенных в самых знаковых местах Москвы: Патриаршие пруды, Петровка и Москва Сити.</h2>
+      <div class="salons_slider__text animation animation_bot">Команда высокопрофессиональных мастеров по маникюру, cтилистов и визажистов сделает ваше пребывание в KYNSI максимально безопасным и комфортным.</div>
+    </section>
+{% endif %}

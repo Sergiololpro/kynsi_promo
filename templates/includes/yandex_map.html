@@ -1,0 +1,7 @@
+{% load static %}
+
+{% if site_settings.ya_map %}
+    <div class="map animation animation_bot">
+      <iframe class="lazyload" title="yandexMap" data-src="{{ site_settings.ya_map }}"></iframe>
+    </div>
+{% endif %}
