@@ -126,7 +126,7 @@ class Categories(models.Model):
         return ' -> '.join(full_path[::-1])
 
     @property
-    def get_products(self):
+    def get_subcategories(self):
          return SubCategories.objects.filter(category=self.id, is_show=True)
 
 class SubCategories(models.Model):
@@ -149,5 +149,35 @@ class SubCategories(models.Model):
     class Meta:
         verbose_name = "Услуги - подкатегории"
         verbose_name_plural = "Услуги - подкатегории"
+
+    def __str__(self):                           
+        full_path = [self.title]                  
+        k = self.parent
+        return ' -> '.join(full_path[::-1])
+
+    @property
+    def get_sevices(self):
+         return Services.objects.filter(subcategory=self.id, is_show=True)
+
+class Services(models.Model):
+    """
+    Модель услуги
+    """
+    title = models.CharField(
+        max_length=128, null=False, blank=True, default="", verbose_name="Название услуги",
+        help_text="Маникюры"
+    )
+
+    subcategory = models.ForeignKey(SubCategories, verbose_name='Родительская подкатегория', related_name='parent', on_delete=models.CASCADE)
+
+    order = models.IntegerField(verbose_name="Порядок отображения подкатегорию", default=100)
+
+    is_show = models.BooleanField(
+        verbose_name="Показывать услугу на сайте", default=True,
+    )
+
+    class Meta:
+        verbose_name = "Услуги"
+        verbose_name_plural = "Услуги"
 
  

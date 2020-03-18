@@ -22,8 +22,11 @@
   <div class="wrapper">
     {% for category in categories %}
       {{ category }}
-      {% for product in category.get_products %}
-            <p> {{product.title}} </p>
+      {% for subcategory in category.get_subcategories %}
+            <p> {{subcategory.title}} </p>
+            {% for service in subcategory.get_sevices %}
+              <p> {{service.title}} </p>
+            {% endfor %}
         {% endfor %}
     {% endfor %}
     <section id="certs" class="certs">

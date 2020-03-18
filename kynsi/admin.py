@@ -113,3 +113,23 @@ class SubCategories(admin.ModelAdmin):
             },  
         ),
     ]
+
+@admin.register(Services)
+class Services(admin.ModelAdmin):
+    model = Site
+    extra = 0
+
+    list_display = ('id', 'title')
+
+    fieldsets = [
+        (
+            'Основные', {
+                'fields': [
+                    'title',
+                    'subcategory',
+                    'order',
+                    'is_show',
+                ]
+            },  
+        ),
+    ]
