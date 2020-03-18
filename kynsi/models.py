@@ -253,6 +253,40 @@ class SalonSliderImage(models.Model):
         ordering = ['ordering']
 
 
+class InstaSlider(models.Model):
+    """
+    Модель слайдера instagram
+    """
+    class Meta:
+        verbose_name = "Слайдер instagram"
+        verbose_name_plural = "Слайдер instagram"
+
+
+class InstaSliderImage(models.Model):
+    """
+    Модель картинок слайдера салонов
+    """
+    image = models.ImageField('Картинки', upload_to='site_images', null=True)
+    url = models.CharField(
+        max_length=128, null=False, blank=True, default="", verbose_name="Сслыка на пост в insagram",
+        help_text="https://www.instagram.com/p/BpM7dqQHUmz/"
+    )
+    title = models.CharField(
+        max_length=128, null=False, blank=True, default="", verbose_name="Название картинки слайдера",
+        help_text="Kynsi Петровка"
+    )
+    slider = models.ForeignKey(InstaSlider, verbose_name='Слайдер insagram', related_name='images', on_delete=models.CASCADE)
+    ordering = models.IntegerField('Порядок', default=0)
+
+    def __str__(self):
+        return str(self.pk)
+
+    class Meta:
+        verbose_name = 'Картинка для сладйера instagram'
+        verbose_name_plural = 'Картинка для сладйера instagram'
+        ordering = ['ordering']
+
+
 class BlogSlider(models.Model):
     """
     Модель слайдера блогов

@@ -60,6 +60,7 @@ class MainView(SiteGenericView):
         context['salonsliders'] = SalonsSlider.objects.all().first()
         context['blogliders'] = BlogSlider.objects.all().filter(is_show=True)
         context['reviewssliders'] = ReviewsSlider.objects.all().filter(is_show=True)
+        context['instagram'] = InstaSlider.objects.all().first()
 
         return self.render_to_response(context)
 
@@ -69,6 +70,19 @@ class DressCodeView(SiteGenericView):
     Страница дресскод
     """
     template_name = "dresscode.html"
+
+    def get(self, request, *args, **kwargs):
+
+        context = self.get_context_data(**kwargs)
+
+        return self.render_to_response(context)
+
+
+class CareView(SiteGenericView):
+    """
+    Страница режим работы
+    """
+    template_name = "care.html"
 
     def get(self, request, *args, **kwargs):
 

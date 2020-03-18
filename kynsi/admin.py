@@ -15,6 +15,18 @@ class SalonSliderImageInline(admin.TabularInline):
             height=150,
         ))
 
+class InstaSliderImageInline(admin.TabularInline):
+    model = InstaSliderImage
+    extra = 3
+    readonly_fields = ["preview"]
+
+    def preview(self, obj):
+        return mark_safe('<img src="{url}" width="{width}" height={height} />'.format(
+            url=obj.image.url,
+            width=200,
+            height=150,
+        ))
+
 @admin.register(Site)
 class SiteSettings(admin.ModelAdmin):
     model = Site
@@ -178,6 +190,10 @@ class Brands(admin.ModelAdmin):
 class SalonsSlider(admin.ModelAdmin):
     inlines = [SalonSliderImageInline]
 
+@admin.register(InstaSlider)
+class InstaSlider(admin.ModelAdmin):
+    inlines = [InstaSliderImageInline]
+
 @admin.register(BlogSlider)
 class BlogSlider(admin.ModelAdmin):
     model = Site
@@ -197,6 +213,7 @@ class BlogSlider(admin.ModelAdmin):
             },  
         ),
     ]
+
 
 @admin.register(ReviewsSlider)
 class ReviewsSlider(admin.ModelAdmin):

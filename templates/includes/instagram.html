@@ -1,0 +1,11 @@
+{% load static %}
+
+{% if instagram %}
+  <div class="block_9">
+    {% for insta in instagram.images.all %}
+      <div class="block_9__slider animation animation_bot">
+        <a href="https://www.instagram.com/p/BpM7dqQHUmz/" aria-label="{{ insta.title }}" rel="noopener" target="_blank" class="block_9__img lazyload" {% if insta.image %}data-bg="{{ insta.image.url }}"{% endif %}></a>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}

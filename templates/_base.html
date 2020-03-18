@@ -104,7 +104,9 @@
 
     <div class="header">
       <div class="wrapper wrapper-header">
-        <div class="header__logo"></div>
+        {% block header_logo %}
+          <a href="/" class="header__logo"></a>
+        {% endblock %}
         {% block header_nav %}
           <nav class="header__navs">
             <div data-nav="about" class="header__nav">О нас</div>

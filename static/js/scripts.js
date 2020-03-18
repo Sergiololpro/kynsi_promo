@@ -77,15 +77,15 @@ $(document).ready(function() {
     }
 
     // Слайдер instagram
-    if ($('.block_9__slider').length) {
-        $('.block_9__slider').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false,
-            autoplay: true,
-            fade: true
-        });
-    }
+    // if ($('.block_9__slider').length) {
+    //     $('.block_9__slider').slick({
+    //         slidesToShow: 1,
+    //         slidesToScroll: 1,
+    //         arrows: false,
+    //         autoplay: true,
+    //         fade: true
+    //     });
+    // }
     
     // Телефоны в шапке
     $(".header__phone").on("click", function () {
@@ -143,7 +143,7 @@ $(document).ready(function() {
     });
 
     // Вверх
-    $(".header__logo").on("click", function() {
+    $(".header__logo:not(a)").on("click", function() {
         $('body, html').animate({
             scrollTop: 0
         }, 800);

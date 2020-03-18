@@ -1,22 +1,26 @@
 {% extends '_base.html' %}
 
+{% block header_logo %}
+  <div class="header__logo"></div>
+{% endblock %}
+
 {% block content %}
-    <div class="banner lazyload" data-bg="/static/img/banner-mob.jpg">
-      <div class="banner__video">
-        <video class="banner__video lazyload" data-src="/static/video/video_comp.mp4" playsinline="" autoplay="" loop="" muted=""></video>
+  <div class="banner lazyload" data-bg="/static/img/banner-mob.jpg">
+    <div class="banner__video">
+      <video class="banner__video lazyload" data-src="/static/video/video_comp.mp4" playsinline="" autoplay="" loop="" muted=""></video>
+    </div>
+    <div class="banner__wrapper">
+      <div class="banner__wr banner__wr-2">
+        <div class="banner__title">Для новых гостей KYNSI дарит скидку 15% на первое посещение</div>
+        <div class="show_modal button button-banner" data-optin-slug="oewrrvnfegodghltcpuo">Получить скидку</div>
       </div>
-      <div class="banner__wrapper">
-        <div class="banner__wr banner__wr-2">
-          <div class="banner__title">Для новых гостей KYNSI дарит скидку 15% на первое посещение</div>
-          <div class="show_modal button button-banner" data-optin-slug="oewrrvnfegodghltcpuo">Получить скидку</div>
-        </div>
-        <div class="banner__wr banner__wr-1 active">
-          <img class="banner__logo lazyload" src="#" data-src="/static/img/header__logo-white.svg" alt="">
-          <div class="banner__text">NAIL SPA & HAIR</div>
-           <div class="button button-banner widget reservi_button_emulation">Онлайн-запись</div>
-        </div>
+      <div class="banner__wr banner__wr-1 active">
+        <img class="banner__logo lazyload" src="#" data-src="/static/img/header__logo-white.svg" alt="">
+        <div class="banner__text">NAIL SPA & HAIR</div>
+          <div class="button button-banner widget reservi_button_emulation">Онлайн-запись</div>
       </div>
     </div>
+  </div>
 
   <div class="wrapper">
     <section id="certs" class="certs">
@@ -117,48 +121,7 @@
 
     {% include "includes/reviews_slider.html" %}
 
-    <div class="block_9">
-      <div class="block_9__slider animation animation_bot">
-        <a href="https://www.instagram.com/p/BpM7dqQHUmz/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-1.jpg"></a>
-        <a href="https://www.instagram.com/p/BsdpbuLHx2H/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-9.jpg"></a>
-        <a href="https://www.instagram.com/p/Br5Z6jTnbv-/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-10.jpg"></a>
-      </div>
-      <div class="block_9__slider animation animation_bot">
-        <a href="https://www.instagram.com/p/Behi9-vB28R/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-2.jpg"></a>
-        <a href="https://www.instagram.com/p/Br0nKd5HEV7/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-11.jpg"></a>
-        <a href="https://www.instagram.com/p/BruH1vxnEdJ/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-12.jpg"></a>
-      </div>
-      <div class="block_9__slider animation animation_bot">
-        <a href="https://www.instagram.com/p/BeXuOZQFioZ/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-3.jpg"></a>
-        <a href="https://www.instagram.com/p/BrmWPc4Hz0t/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-13.jpg"></a>
-        <a href="https://www.instagram.com/p/BqrLQwwH5vV/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-14.jpg"></a>
-      </div>
-      <div class="block_9__slider animation animation_bot">
-        <a href="https://www.instagram.com/p/Bp6thdXHl7L/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-4.jpg"></a>
-        <a href="https://www.instagram.com/p/BphzahZnNts/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-15.jpg"></a>
-        <a href="https://www.instagram.com/p/Bn0ze-BhuYw/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-16.jpg"></a>
-      </div>
-      <div class="block_9__slider animation animation_bot">
-        <a href="https://www.instagram.com/p/BdzUZJFl3Qr/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-5.jpg"></a>
-        <a href="https://www.instagram.com/p/BnTJZBMBAzz/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-17.jpg"></a>
-        <a href="https://www.instagram.com/p/Bl-Nh3Lh5hW/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-18.jpg"></a>
-      </div>
-      <div class="block_9__slider animation animation_bot">
-        <a href="https://www.instagram.com/p/BbuS7PFldQa/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-6.jpg"></a>
-        <a href="https://www.instagram.com/p/Bhl0uQkBjH9/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-19.jpg"></a>
-        <a href="https://www.instagram.com/p/BgV6BVvHN7E/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-20.jpg"></a>
-      </div>
-      <div class="block_9__slider animation animation_bot">
-        <a href="https://www.instagram.com/p/Ba6o8GIlT8-/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-7.jpg"></a>
-        <a href="https://www.instagram.com/p/BeAQrPdl1ab/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-21.jpg"></a>
-        <a href="https://www.instagram.com/p/Bdw5Ez5FqSW/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-22.jpg"></a>
-      </div>
-      <div class="block_9__slider animation animation_bot">
-        <a href="https://www.instagram.com/p/BcZQaB9ltB-/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-8.jpg"></a>
-        <a href="https://www.instagram.com/p/BczPTXUFABI/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-23.jpg"></a>
-        <a href="https://www.instagram.com/p/BcmcCZ8FeKh/" aria-label="instagram" rel="noopener" target="_blank" class="block_9__img lazyload" data-bg="/static/img/block_9__img-24.jpg"></a>
-      </div>
-    </div>
+    {% include "includes/instagram.html" %}
 
     {% include "includes/yandex_map.html" %}
 
