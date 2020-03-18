@@ -125,6 +125,10 @@ class Categories(models.Model):
         k = self.parent
         return ' -> '.join(full_path[::-1])
 
+    @property
+    def get_products(self):
+         return SubCategories.objects.filter(category=self.id, is_show=True)
+
 class SubCategories(models.Model):
     """
     Модель подкатегорий

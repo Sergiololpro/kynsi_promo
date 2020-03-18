@@ -52,15 +52,9 @@ class MainView(SiteGenericView):
 
         context = self.get_context_data(**kwargs)
 
-        categories = Categories.objects.all()
+        categories = Categories.objects.all().filter(is_show=True)
 
         context['categories'] = categories
-
-        print(categories)
-
-        for category in categories:
-            subCategory = SubCategories.objects.filter(category=category)
-            print(subCategory)
 
         return self.render_to_response(context)
 

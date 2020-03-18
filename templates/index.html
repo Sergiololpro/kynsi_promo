@@ -23,7 +23,7 @@
     {% for category in categories %}
       {{ category }}
       {% for product in category.get_products %}
-            <p> {{product}} </p>
+            <p> {{product.title}} </p>
         {% endfor %}
     {% endfor %}
     <section id="certs" class="certs">
